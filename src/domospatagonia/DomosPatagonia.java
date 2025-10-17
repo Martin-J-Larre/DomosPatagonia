@@ -3,12 +3,13 @@ package domospatagonia;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author martin
  */
-public class DomosPatagonia extends JFrame{
+public class DomosPatagonia extends JFrame implements ActionListener {
 
 // Frame Inicio App DomosPatagonia
     // Constructor
@@ -25,25 +26,34 @@ public class DomosPatagonia extends JFrame{
         add(image);
         
         // Set Btn inicio
-        JButton inicioBtn = new JButton("Inicio");
-        inicioBtn.setBounds(435, 450, 150, 50);
+        JButton ingresarBtn = new JButton("Ingresar");
+        ingresarBtn.setBounds(435, 450, 150, 50);
         
-        //@ Cambio de color btn no funciona en Mac investigar como hacerlo
+        //TODO: Cambio de color btn no funciona en Mac investigar como hacerlo
         
         // inicioBtn.setBackground(Color.YELLOW);
         // inicioBtn.setOpaque(true);
         // inicioBtn.setBorderPainted(false);
         // inicioBtn.setForeground(Color.YELLOW);
+        ingresarBtn.addActionListener(this);
  
 
         Font btnFont = new Font("Arial", Font.BOLD, 16);
-        inicioBtn.setFont(btnFont);
-        image.add(inicioBtn);
+        ingresarBtn.setFont(btnFont);
+        image.add(ingresarBtn);
         
         
         
         setVisible(true);
     }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae){
+        setVisible(false);
+        new IniciarSesion();
+    }
+    
+    
     
     public static void main(String[] args) {
         // TODO code application logic here
