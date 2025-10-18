@@ -136,7 +136,7 @@ public class Empleado extends JFrame implements ActionListener{
         
         
         // Btn Enviar
-        enviarBtn = new JButton("Inicio Sesión");
+        enviarBtn = new JButton("Enviar");
         enviarBtn.setFont(fontPrincipal);
         enviarBtn.setBounds(130, 410, 150, 30);
         enviarBtn.setBackground(Color.decode("#2c4536"));

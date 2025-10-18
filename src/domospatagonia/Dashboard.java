@@ -39,14 +39,20 @@ public class Dashboard extends JFrame {
         textBienvenida.setFont(new Font("Arial", Font.BOLD, 26));
         
         // Menu recepcion/admin
+        // Pensar bien como implementar el menu del dashboard
+        // por un lado tiene que estar el menejo de empleados, donde se divide en
+        // los tipos de empleados (3 areas/ el empleado administrador/ el de limpieza y Guia de turismo)
+        // Por otro lado el del manejo de domos, limpieza y servicios.
+        // por otro lado la recepcion de los huespedes con checkin check out y asignacion de guia T.
+        
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(400, 200, 400,30);
         add(menuBar);
         
-        JMenu menuComplejoDomo = new JMenu("Complejo Domo");
+        JMenu menuComplejoDomo = new JMenu("Manejo Domos");
         menuBar.add(menuComplejoDomo);
         
-        JMenuItem recepcion = new JMenuItem("Recepción");
+        JMenuItem recepcion = new JMenuItem("Recepción Huesped");
         menuComplejoDomo.add(recepcion);
         
         JMenu menuAdmin = new JMenu("Admin");
