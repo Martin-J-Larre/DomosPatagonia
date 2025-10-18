@@ -14,7 +14,7 @@ import javax.swing.*;
 public class Dashboard extends JFrame {
 
     public Dashboard() {
-        setBounds(200, 100, 1000, 800);
+        setBounds(200, 200, 1020, 584);
         setLayout(null);
         
 //        // Crear Layout
