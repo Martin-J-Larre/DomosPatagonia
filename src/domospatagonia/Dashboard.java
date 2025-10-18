@@ -67,6 +67,7 @@ public class Dashboard extends JFrame implements ActionListener{
         menuAdmin.add(empleado);
         
         JMenuItem guiaTirismo = new JMenuItem("Guia Turismo");
+        guiaTirismo.addActionListener(this);
         menuAdmin.add(guiaTirismo);
         
         JMenuItem domos = new JMenuItem("Domos");
@@ -86,7 +87,11 @@ public class Dashboard extends JFrame implements ActionListener{
             new Empleado();
         } else if(ae.getActionCommand().equals("Domos")){
             new Domo();
-        } 
+            // Todo lo referido a empleados agregar disparar desde area en form empleado
+            // Cambiar menu dashboard
+        } else if (ae.getActionCommand().equals("Guia Turismo")){
+            new GuiaTurismo();
+        }
 }
     
     
