@@ -12,7 +12,15 @@ import javax.swing.*;
  * @author martin
  */
 public class Domo extends JFrame implements ActionListener{
-
+    JTextField idDomoTextField, tipoDeCamaTextField, amenitiesTextField, serviciosTextField, precioTextField;
+    JComboBox disponibleComboBox;
+    JRadioButton limpioRadioBtn, desordenadoRadioBtn;
+    JButton enviarBtn, cancelarBtn;
+    
+    
+    
+            
+            
     public Domo() {
         setLayout(null);
         setBounds(200, 200, 1020, 584);
@@ -28,7 +36,7 @@ public class Domo extends JFrame implements ActionListener{
         idDomoLabel.setBounds(60, 30, 200, 30);
         add(idDomoLabel);
         
-        JTextField idDomoTextField = new JTextField();
+        idDomoTextField = new JTextField();
         idDomoTextField.setBounds(200, 30, 200, 30);
         add(idDomoTextField);
         
@@ -39,7 +47,7 @@ public class Domo extends JFrame implements ActionListener{
         tipoDeCamaLabel.setBounds(60, 60, 200, 30);
         add(tipoDeCamaLabel);
         
-        JTextField tipoDeCamaTextField = new JTextField();
+        tipoDeCamaTextField = new JTextField();
         tipoDeCamaTextField.setBounds(200, 60, 200, 30);
         add(tipoDeCamaTextField);
         
@@ -50,9 +58,9 @@ public class Domo extends JFrame implements ActionListener{
         add(disponibilidadLabel);
         
         String estados[] = {"Disponible", "Ocupado"};
-        JComboBox areaComboBox = new JComboBox(estados);
-        areaComboBox.setBounds(200, 90, 200, 30);
-        add(areaComboBox);
+        disponibleComboBox = new JComboBox(estados);
+        disponibleComboBox.setBounds(200, 90, 200, 30);
+        add(disponibleComboBox);
         
         // Amenities
         JLabel amenitiesLabel = new JLabel("Amenities");
@@ -60,7 +68,7 @@ public class Domo extends JFrame implements ActionListener{
         amenitiesLabel.setBounds(60, 120, 200, 30);
         add(amenitiesLabel);
         
-        JTextField amenitiesTextField = new JTextField();
+        amenitiesTextField = new JTextField();
         amenitiesTextField.setBounds(200, 120, 200, 30);
         add(amenitiesTextField);
         
@@ -71,7 +79,7 @@ public class Domo extends JFrame implements ActionListener{
         serviciosLabel.setBounds(60, 150, 200, 30);
         add(serviciosLabel);
         
-        JTextField serviciosTextField = new JTextField();
+        serviciosTextField = new JTextField();
         serviciosTextField.setBounds(200, 150, 200, 30);
         add(serviciosTextField);
         
@@ -81,12 +89,12 @@ public class Domo extends JFrame implements ActionListener{
         estadoLimpiezaLabel.setFont(fontPrincipal);
         add(estadoLimpiezaLabel);
         
-        JRadioButton limpioRadioBtn = new JRadioButton("Limpio");
+        limpioRadioBtn = new JRadioButton("Limpio");
         limpioRadioBtn.setBounds(200, 180, 100, 30);
         limpioRadioBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         add(limpioRadioBtn);
         
-        JRadioButton desordenadoRadioBtn = new JRadioButton("Desordenado");
+        desordenadoRadioBtn = new JRadioButton("Desordenado");
         desordenadoRadioBtn.setBounds(280, 180, 150, 30);
         desordenadoRadioBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         add(desordenadoRadioBtn);
@@ -102,34 +110,33 @@ public class Domo extends JFrame implements ActionListener{
         precioLabel.setBounds(60, 220, 200, 30);
         add(precioLabel);
         
-        JTextField precioTextField = new JTextField();
+        precioTextField = new JTextField();
         precioTextField.setBounds(200, 220, 200, 30);
         add(precioTextField);
         
         // BTN ENVIAR
-        JButton enviarBtn = new JButton("Enviar");
+        enviarBtn = new JButton("Enviar");
         enviarBtn.setFont(fontPrincipal);
         enviarBtn.setBounds(60, 280, 150, 30);
         enviarBtn.setBackground(Color.decode("#2c4536"));
         enviarBtn.setBorderPainted(false);
         enviarBtn.setOpaque(true);
         enviarBtn.setForeground(Color.WHITE);
-//        enviarBtn.addActionListener(this);
+        enviarBtn.addActionListener(this);
         add(enviarBtn);
         
         //  BTN CANCELAR
-        JButton cancelarBtn = new JButton("Cancelar");
+        cancelarBtn = new JButton("Cancelar");
         cancelarBtn.setFont(fontPrincipal);
         cancelarBtn.setBounds(250, 280, 150, 30);
         cancelarBtn.setBackground(Color.decode("#3c5f4a"));
         cancelarBtn.setBorderPainted(false);
         cancelarBtn.setOpaque(true);
         cancelarBtn.setForeground(Color.decode("#939393"));
-//        cancelarBtn.addActionListener(this);
+        cancelarBtn.addActionListener(this);
         add(cancelarBtn);
         
-        // AGREGAR IMAGENES DINAMICAMENTE desde input
-        
+        //TODO: MAYBE AGREGAR IMAGENES DINAMICAMENTE desde input
         
         
         setVisible(true);
@@ -137,6 +144,39 @@ public class Domo extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        
+        if (ae.getSource() == enviarBtn) {
+            // limpioRadioBtn, desordenadoRadioBtn
+            String idDomo = idDomoTextField.getText();
+            String tipoDeCama = tipoDeCamaTextField.getText();
+            String amenities = amenitiesTextField.getText();
+            String servicios = serviciosTextField.getText();
+            String Precio = precioTextField.getText();
+            String disponible = (String) disponibleComboBox.getSelectedItem();
+            
+            String estadoLimpieza = null;
+        
+            if (limpioRadioBtn.isSelected()) {
+                estadoLimpieza = "Limpio";
+             } else if(desordenadoRadioBtn.isSelected()){
+                 estadoLimpieza = "Desordenado";
+                }
+                // else "Mandar un alerta selecionar un radio Btn
+                
+            try {
+                // Logica BBDD Supongo, pronto sabremos
+                JOptionPane.showMessageDialog(null,"Nuevo Domo agregrado exitosamente");
+                
+                setVisible(false);
+                
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        } else {
+            setVisible(false);
+        }
     
     }
     
