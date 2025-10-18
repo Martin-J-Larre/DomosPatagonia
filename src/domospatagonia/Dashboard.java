@@ -48,34 +48,44 @@ public class Dashboard extends JFrame implements ActionListener{
         // por otro lado la recepcion de los huespedes con checkin check out y asignacion de guia T.
         // ****** Volver a implementar el Dashboard *****
         
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBounds(400, 200, 400,30);
-        add(menuBar);
         
-        JMenu menuComplejoDomo = new JMenu("Manejo Domos");
-        menuBar.add(menuComplejoDomo);
-        
-        JMenuItem recepcion = new JMenuItem("Recepción Huesped");
-        recepcion.addActionListener(this);
-        menuComplejoDomo.add(recepcion);
+        //Menu Admin
+        JMenuBar menuBarAdmin = new JMenuBar();
+        menuBarAdmin.setBounds(100, 200, 150,30);
+        add(menuBarAdmin);
         
         JMenu menuAdmin = new JMenu("Admin");
-        menuBar.add(menuAdmin);
-         
-        JMenuItem empleado = new JMenuItem("Empleado");
+        menuBarAdmin.add(menuAdmin);
+        
+        JMenuItem empleado = new JMenuItem("Agregar Empleado");
         empleado.addActionListener(this);
         menuAdmin.add(empleado);
         
-        JMenuItem guiaTirismo = new JMenuItem("Guia Turismo");
+        JMenuItem guiaTirismo = new JMenuItem("Agregar Guia Turismo");
         guiaTirismo.addActionListener(this);
         menuAdmin.add(guiaTirismo);
         
-        JMenuItem domos = new JMenuItem("Domos");
+        JMenuItem domos = new JMenuItem("Agregar Domos");
         domos.addActionListener(this);
         menuAdmin.add(domos);
+        
+        
+        //Recepción
+        JMenuBar menuBarRecepcion = new JMenuBar();
+        menuBarRecepcion.setBounds(100, 240, 150,30);
+        add(menuBarRecepcion);
+        
+        JMenu menuRecepcion = new JMenu("Admin Domos");
+        menuBarRecepcion.add(menuRecepcion);
+        
+        JMenuItem manejoDomos = new JMenuItem("Manejo xxx");
+        manejoDomos.addActionListener(this);
+        menuRecepcion.add(manejoDomos);
                 
-                
-                
+        JMenuItem recepcion = new JMenuItem("Recepción");
+        recepcion.addActionListener(this);
+        menuRecepcion.add(recepcion);
+                   
         add(textBienvenida);    
 
     setVisible(true);
@@ -83,14 +93,16 @@ public class Dashboard extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("Empleado")) {
+        if (ae.getActionCommand().equals("Agregar Empleado")) {
             new Empleado();
-        } else if(ae.getActionCommand().equals("Domos")){
+        } else if(ae.getActionCommand().equals("Agregar Domos")){
             new Domo();
             // Todo lo referido a empleados agregar disparar desde area en form empleado
             // Cambiar menu dashboard
-        } else if (ae.getActionCommand().equals("Guia Turismo")){
+        } else if (ae.getActionCommand().equals("Agregar Guia Turismo")){
             new GuiaTurismo();
+        } else if (ae.getActionCommand().equals("Recepción")){
+            new Recepcion();
         }
 }
     

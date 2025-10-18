@@ -31,46 +31,46 @@ public class Empleado extends JFrame implements ActionListener{
         
         // Nombre
         JLabel nombreLabel = new JLabel("Nombre");
-        nombreLabel.setBounds(60, 30, 120, 30);
+        nombreLabel.setBounds(60, 30, 200, 30);
         nombreLabel.setFont(fontPrincipal);
         add(nombreLabel);
         
         nombreTextField = new JTextField();
-        nombreTextField.setBounds(130, 30, 150, 30);
+        nombreTextField.setBounds(130, 30, 200, 30);
         add(nombreTextField);
         
         // Apellido
         JLabel apellidoLabel = new JLabel("Apellido");
-        apellidoLabel.setBounds(60, 70, 120, 30);
+        apellidoLabel.setBounds(60, 70, 200, 30);
         apellidoLabel.setFont(fontPrincipal);
         add(apellidoLabel);
         
         apellidoTextField = new JTextField();
-        apellidoTextField.setBounds(130, 70, 150, 30);
+        apellidoTextField.setBounds(130, 70, 200, 30);
         add(apellidoTextField);
         
         // DNI
         //*********************************************
         //****  Parse int cuando hacemos .getText()
         JLabel dniLabel = new JLabel("DNI");
-        dniLabel.setBounds(60, 110, 120, 30);
+        dniLabel.setBounds(60, 110, 200, 30);
         dniLabel.setFont(fontPrincipal);
         add(dniLabel);
         
         dniTextField = new JTextField();
-        dniTextField.setBounds(130, 110, 150, 30);
+        dniTextField.setBounds(130, 110, 200, 30);
         add(dniTextField);
         
         // Edad
         //*********************************************
         //****  Parse int cuando hacemos .getText()
         JLabel edadLabel = new JLabel("Edad");
-        edadLabel.setBounds(60, 150, 120, 30);
+        edadLabel.setBounds(60, 150, 200, 30);
         edadLabel.setFont(fontPrincipal);
         add(edadLabel);
         
         edadTextField = new JTextField();
-        edadTextField.setBounds(130, 150, 150, 30);
+        edadTextField.setBounds(130, 150, 200, 30);
         add(edadTextField);
         
         // Genero
@@ -95,43 +95,43 @@ public class Empleado extends JFrame implements ActionListener{
         
          // Telefono
         JLabel telefonoLabel = new JLabel("Telefono");
-        telefonoLabel.setBounds(60, 230, 120, 30);
+        telefonoLabel.setBounds(60, 230, 200, 30);
         telefonoLabel.setFont(fontPrincipal);
         add(telefonoLabel);
         
         telefonoTextField = new JTextField();
-        telefonoTextField.setBounds(130, 230, 150, 30);
+        telefonoTextField.setBounds(130, 230, 200, 30);
         add(telefonoTextField);
         
         // Area
         JLabel areaLabel = new JLabel("Area");
-        areaLabel.setBounds(60, 270, 120, 30);
+        areaLabel.setBounds(60, 270, 200, 30);
         areaLabel.setFont(fontPrincipal);
         add(areaLabel);
         
         String areas[] = {"Empleado Administrador", "Empleado Limpieza", "Guía Turismo"};
         areaComboBox = new JComboBox(areas);
-        areaComboBox.setBounds(130, 270, 150, 30);
+        areaComboBox.setBounds(130, 270, 200, 30);
         add(areaComboBox);
         
         // Turno
         JLabel turnoLabel = new JLabel("Turno");
-        turnoLabel.setBounds(60, 310, 120, 30);
+        turnoLabel.setBounds(60, 310, 200, 30);
         turnoLabel.setFont(fontPrincipal);
         add(turnoLabel);
         
         turnoTextField = new JTextField();
-        turnoTextField.setBounds(130, 310, 150, 30);
+        turnoTextField.setBounds(130, 310, 200, 30);
         add(turnoTextField);
         
         // Email
         JLabel emailLabel = new JLabel("Email");
-        emailLabel.setBounds(60, 350, 120, 30);
+        emailLabel.setBounds(60, 350, 200, 30);
         emailLabel.setFont(fontPrincipal);
         add(emailLabel);
         
         emailTextField = new JTextField();
-        emailTextField.setBounds(130, 350, 150, 30);
+        emailTextField.setBounds(130, 350, 200, 30);
         add(emailTextField);
         
         
@@ -146,6 +146,7 @@ public class Empleado extends JFrame implements ActionListener{
         enviarBtn.addActionListener(this);
         add(enviarBtn);
         
+        // AGREGAR btn cancelar
         
         
         
