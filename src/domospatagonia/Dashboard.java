@@ -5,13 +5,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
  *
  * @author martin
  */
-public class Dashboard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener{
 
     public Dashboard() {
         setBounds(200, 200, 1020, 584);
@@ -44,6 +46,7 @@ public class Dashboard extends JFrame {
         // los tipos de empleados (3 areas/ el empleado administrador/ el de limpieza y Guia de turismo)
         // Por otro lado el del manejo de domos, limpieza y servicios.
         // por otro lado la recepcion de los huespedes con checkin check out y asignacion de guia T.
+        // ****** Volver a implementar el Dashboard *****
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(400, 200, 400,30);
@@ -53,18 +56,21 @@ public class Dashboard extends JFrame {
         menuBar.add(menuComplejoDomo);
         
         JMenuItem recepcion = new JMenuItem("Recepción Huesped");
+        recepcion.addActionListener(this);
         menuComplejoDomo.add(recepcion);
         
         JMenu menuAdmin = new JMenu("Admin");
         menuBar.add(menuAdmin);
          
         JMenuItem empleado = new JMenuItem("Empleado");
+        empleado.addActionListener(this);
         menuAdmin.add(empleado);
         
         JMenuItem guiaTirismo = new JMenuItem("Guia Turismo");
         menuAdmin.add(guiaTirismo);
         
         JMenuItem domos = new JMenuItem("Domos");
+        domos.addActionListener(this);
         menuAdmin.add(domos);
                 
                 
@@ -73,6 +79,16 @@ public class Dashboard extends JFrame {
 
     setVisible(true);
     }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getActionCommand().equals("Empleado")) {
+            new Empleado();
+        } else if(ae.getActionCommand().equals("Domos")){
+            new Domo();
+        } 
+}
+    
     
     public static void main(String[] args) {
         new Dashboard();
