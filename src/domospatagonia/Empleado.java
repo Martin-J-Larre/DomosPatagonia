@@ -2,6 +2,8 @@
 package domospatagonia;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
@@ -9,8 +11,14 @@ import javax.swing.*;
  *
  * @author martin
  */
-public class Empleado extends JFrame{
+public class Empleado extends JFrame implements ActionListener{
 
+    JTextField nombreTextField, apellidoTextField, dniTextField;
+    JTextField edadTextField, telefonoTextField,turnoTextField,emailTextField;
+    JRadioButton masculinoRadioBtn, femeninoRadioBtn;
+    JComboBox areaComboBox;
+    JButton enviarBtn;
+            
     public Empleado() {
         // Set Frame
         setLayout(null);
@@ -27,7 +35,7 @@ public class Empleado extends JFrame{
         nombreLabel.setFont(fontPrincipal);
         add(nombreLabel);
         
-        JTextField nombreTextField = new JTextField();
+        nombreTextField = new JTextField();
         nombreTextField.setBounds(130, 30, 150, 30);
         add(nombreTextField);
         
@@ -37,7 +45,7 @@ public class Empleado extends JFrame{
         apellidoLabel.setFont(fontPrincipal);
         add(apellidoLabel);
         
-        JTextField apellidoTextField = new JTextField();
+        apellidoTextField = new JTextField();
         apellidoTextField.setBounds(130, 70, 150, 30);
         add(apellidoTextField);
         
@@ -49,7 +57,7 @@ public class Empleado extends JFrame{
         dniLabel.setFont(fontPrincipal);
         add(dniLabel);
         
-        JTextField dniTextField = new JTextField();
+        dniTextField = new JTextField();
         dniTextField.setBounds(130, 110, 150, 30);
         add(dniTextField);
         
@@ -61,7 +69,7 @@ public class Empleado extends JFrame{
         edadLabel.setFont(fontPrincipal);
         add(edadLabel);
         
-        JTextField edadTextField = new JTextField();
+        edadTextField = new JTextField();
         edadTextField.setBounds(130, 150, 150, 30);
         add(edadTextField);
         
@@ -71,15 +79,19 @@ public class Empleado extends JFrame{
         generoLabel.setFont(fontPrincipal);
         add(generoLabel);
         
-        JRadioButton masculinoRadioBtn = new JRadioButton("Hombre");
+        masculinoRadioBtn = new JRadioButton("Hombre");
         masculinoRadioBtn.setBounds(130, 190, 90, 30);
         masculinoRadioBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         add(masculinoRadioBtn);
         
-        JRadioButton femeninoRadioBtn = new JRadioButton("Mujer");
+        femeninoRadioBtn = new JRadioButton("Mujer");
         femeninoRadioBtn.setBounds(210, 190, 75, 30);
         femeninoRadioBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         add(femeninoRadioBtn);
+        
+        ButtonGroup bg =  new ButtonGroup();
+        bg.add(masculinoRadioBtn);
+        bg.add(femeninoRadioBtn);
         
          // Telefono
         JLabel telefonoLabel = new JLabel("Telefono");
@@ -87,7 +99,7 @@ public class Empleado extends JFrame{
         telefonoLabel.setFont(fontPrincipal);
         add(telefonoLabel);
         
-        JTextField telefonoTextField = new JTextField();
+        telefonoTextField = new JTextField();
         telefonoTextField.setBounds(130, 230, 150, 30);
         add(telefonoTextField);
         
@@ -98,7 +110,7 @@ public class Empleado extends JFrame{
         add(areaLabel);
         
         String areas[] = {"Empleado Administrador", "Empleado Limpieza", "Guía Turismo"};
-        JComboBox areaComboBox = new JComboBox(areas);
+        areaComboBox = new JComboBox(areas);
         areaComboBox.setBounds(130, 270, 150, 30);
         add(areaComboBox);
         
@@ -108,7 +120,7 @@ public class Empleado extends JFrame{
         turnoLabel.setFont(fontPrincipal);
         add(turnoLabel);
         
-        JTextField turnoTextField = new JTextField();
+        turnoTextField = new JTextField();
         turnoTextField.setBounds(130, 310, 150, 30);
         add(turnoTextField);
         
@@ -118,19 +130,20 @@ public class Empleado extends JFrame{
         emailLabel.setFont(fontPrincipal);
         add(emailLabel);
         
-        JTextField emailTextField = new JTextField();
+        emailTextField = new JTextField();
         emailTextField.setBounds(130, 350, 150, 30);
         add(emailTextField);
         
         
         // Btn Enviar
-        JButton enviarBtn = new JButton("Inicio Sesión");
+        enviarBtn = new JButton("Inicio Sesión");
         enviarBtn.setFont(fontPrincipal);
         enviarBtn.setBounds(130, 410, 150, 30);
         enviarBtn.setBackground(Color.decode("#2c4536"));
         enviarBtn.setBorderPainted(false);
         enviarBtn.setOpaque(true);
         enviarBtn.setForeground(Color.WHITE);
+        enviarBtn.addActionListener(this);
         add(enviarBtn);
         
         
@@ -140,6 +153,38 @@ public class Empleado extends JFrame{
         
         setVisible(true);
                 
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        String nombre = nombreTextField.getText();
+        String apellido = apellidoTextField.getText();
+        String dni = dniTextField.getText();
+        String edad = edadTextField.getText();
+        String telefono = telefonoTextField.getText();
+        String turno = turnoTextField.getText();
+        String email =  emailTextField.getText();
+        
+        String genero = null;
+        
+        if (masculinoRadioBtn.isSelected()) {
+            genero = "Hombre";
+        } else if(femeninoRadioBtn.isSelected()){
+            genero = "Mujer";
+        }
+        // else "Mandar un alerta selecionar un radio Btn
+        
+        String area = (String) areaComboBox.getSelectedItem();
+        
+        try {
+            // Aqui logica enviar a la bbdd
+            JOptionPane.showMessageDialog(null,"Empleado guardado exitosamente");
+            
+            setVisible(false);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public static void main(String[] args) {
