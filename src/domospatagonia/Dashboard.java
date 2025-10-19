@@ -78,9 +78,9 @@ public class Dashboard extends JFrame implements ActionListener{
         JMenu menuRecepcion = new JMenu("Admin Domos");
         menuBarRecepcion.add(menuRecepcion);
         
-        JMenuItem manejoDomos = new JMenuItem("Manejo xxx");
-        manejoDomos.addActionListener(this);
-        menuRecepcion.add(manejoDomos);
+//        JMenuItem manejoDomos = new JMenuItem("");
+//        manejoDomos.addActionListener(this);
+//        menuRecepcion.add(manejoDomos);
                 
         JMenuItem recepcion = new JMenuItem("Recepción");
         recepcion.addActionListener(this);

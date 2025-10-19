@@ -17,7 +17,7 @@ public class Empleado extends JFrame implements ActionListener{
     JTextField edadTextField, telefonoTextField,turnoTextField,emailTextField;
     JRadioButton masculinoRadioBtn, femeninoRadioBtn;
     JComboBox areaComboBox;
-    JButton enviarBtn;
+    JButton enviarBtn, cancelarBtn;
             
     public Empleado() {
         // Set Frame
@@ -137,8 +137,8 @@ public class Empleado extends JFrame implements ActionListener{
         
         // Btn Enviar
         enviarBtn = new JButton("Enviar");
-        enviarBtn.setFont(fontPrincipal);
-        enviarBtn.setBounds(130, 410, 150, 30);
+        enviarBtn.setFont(new Font("Arial", Font.BOLD, 12));
+        enviarBtn.setBounds(130, 410, 90, 30);
         enviarBtn.setBackground(Color.decode("#2c4536"));
         enviarBtn.setBorderPainted(false);
         enviarBtn.setOpaque(true);
@@ -147,17 +147,24 @@ public class Empleado extends JFrame implements ActionListener{
         add(enviarBtn);
         
         // AGREGAR btn cancelar
-        
-        
-        
-        
-        
+            //  BTN Volver
+        cancelarBtn = new JButton("Cancelar");
+        cancelarBtn.setFont(new Font("Arial", Font.BOLD, 12));
+        cancelarBtn.setBounds(230, 410, 100, 30);
+        cancelarBtn.setBackground(Color.decode("#3c5f4a"));
+        cancelarBtn.setBorderPainted(false);
+        cancelarBtn.setOpaque(true);
+        cancelarBtn.setForeground(Color.decode("#939393"));
+        cancelarBtn.addActionListener(this);
+        add(cancelarBtn);
+ 
         setVisible(true);
                 
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == enviarBtn) {
         String nombre = nombreTextField.getText();
         String apellido = apellidoTextField.getText();
         String dni = dniTextField.getText();
@@ -185,6 +192,10 @@ public class Empleado extends JFrame implements ActionListener{
             
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        } else if(ae.getSource() == cancelarBtn){
+            setVisible(false);
+            new Dashboard();
         }
     }
     

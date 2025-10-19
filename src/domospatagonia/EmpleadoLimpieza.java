@@ -126,8 +126,6 @@ public class EmpleadoLimpieza extends JFrame implements ActionListener{
         
     @Override
     public void actionPerformed(ActionEvent ae) {
-     //  , , ;
-     //  , , ;
         if (ae.getSource() == enviarBtn) {
             
             String idEmpleadoLimpieza = idEmpLimpTextField.getText();
