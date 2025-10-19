@@ -13,7 +13,7 @@ import javax.swing.*;
  * @author martin
  */
 public class Recepcion extends JFrame implements ActionListener {
-    JButton nuevoHuespedBtn, areaBtn, empleadosBtn, huespedesBtn, usuarioAdminBtn, checkoutBtn, actualizaStatusBtn, actualizarStatusDomoBtn, guiaTurismoBtn, domosBtn, salirBtn ;
+    JButton nuevoHuespedBtn, areaBtn, empleadosBtn, huespedesBtn, usuarioAdminBtn, checkoutBtn, actualizaStatusBtn, actualizarStatusDomoBtn, guiaTurismoBtn, domosBtn, salirBtn, buscarDomoBtn; ;
 
     public Recepcion() {
         setLayout(null);
@@ -26,7 +26,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Nueveo Huésped btn
         nuevoHuespedBtn = new JButton("Nuevo Huesped");
         nuevoHuespedBtn.setFont(fontPrincipal);
-        nuevoHuespedBtn.setBounds(20, 110, 150, 30);
+        nuevoHuespedBtn.setBounds(20, 50, 150, 30);
         nuevoHuespedBtn.setBackground(Color.decode("#2c4536"));
         nuevoHuespedBtn.setBorderPainted(false);
         nuevoHuespedBtn.setOpaque(true);
@@ -37,7 +37,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Area btn
         areaBtn = new JButton("Area");
         areaBtn.setFont(fontPrincipal);
-        areaBtn.setBounds(20, 150, 150, 30);
+        areaBtn.setBounds(20, 90, 150, 30);
         areaBtn.setBackground(Color.decode("#2c4536"));
         areaBtn.setBorderPainted(false);
         areaBtn.setOpaque(true);
@@ -49,7 +49,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Empleados btn
         empleadosBtn = new JButton("Empleados");
         empleadosBtn.setFont(fontPrincipal);
-        empleadosBtn.setBounds(20, 190, 150, 30);
+        empleadosBtn.setBounds(20, 130, 150, 30);
         empleadosBtn.setBackground(Color.decode("#2c4536"));
         empleadosBtn.setBorderPainted(false);
         empleadosBtn.setOpaque(true);
@@ -60,7 +60,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Huespedes btn
         huespedesBtn = new JButton("Huespedes");
         huespedesBtn.setFont(fontPrincipal);
-        huespedesBtn.setBounds(20, 230, 150, 30);
+        huespedesBtn.setBounds(20, 170, 150, 30);
         huespedesBtn.setBackground(Color.decode("#2c4536"));
         huespedesBtn.setBorderPainted(false);
         huespedesBtn.setOpaque(true);
@@ -71,7 +71,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Usuario Admin btn
         usuarioAdminBtn = new JButton("Usuario Admin");
         usuarioAdminBtn.setFont(fontPrincipal);
-        usuarioAdminBtn.setBounds(20, 270, 150, 30);
+        usuarioAdminBtn.setBounds(20, 210, 150, 30);
         usuarioAdminBtn.setBackground(Color.decode("#2c4536"));
         usuarioAdminBtn.setBorderPainted(false);
         usuarioAdminBtn.setOpaque(true);
@@ -82,7 +82,7 @@ public class Recepcion extends JFrame implements ActionListener {
         // Checkout btn
         checkoutBtn = new JButton("Checkout");
         checkoutBtn.setFont(fontPrincipal);
-        checkoutBtn.setBounds(20, 310, 150, 30);
+        checkoutBtn.setBounds(20, 250, 150, 30);
         checkoutBtn.setBackground(Color.decode("#2c4536"));
         checkoutBtn.setBorderPainted(false);
         checkoutBtn.setOpaque(true);
@@ -93,7 +93,7 @@ public class Recepcion extends JFrame implements ActionListener {
         //Actualizar estatus  btn
         actualizaStatusBtn = new JButton("Actualizar estatus");
         actualizaStatusBtn.setFont(fontPrincipal);
-        actualizaStatusBtn.setBounds(20, 350, 150, 30);
+        actualizaStatusBtn.setBounds(20, 290, 150, 30);
         actualizaStatusBtn.setBackground(Color.decode("#2c4536"));
         actualizaStatusBtn.setBorderPainted(false);
         actualizaStatusBtn.setOpaque(true);
@@ -104,7 +104,7 @@ public class Recepcion extends JFrame implements ActionListener {
         //Actualizar estatus domo btn
         actualizarStatusDomoBtn = new JButton("Actualizar estatus Domo");
         actualizarStatusDomoBtn.setFont(fontPrincipal);
-        actualizarStatusDomoBtn.setBounds(20, 390, 150, 30);
+        actualizarStatusDomoBtn.setBounds(20, 330, 150, 30);
         actualizarStatusDomoBtn.setBackground(Color.decode("#2c4536"));
         actualizarStatusDomoBtn.setBorderPainted(false);
         actualizarStatusDomoBtn.setOpaque(true);
@@ -115,7 +115,7 @@ public class Recepcion extends JFrame implements ActionListener {
         //Guia Turismo btn
         guiaTurismoBtn = new JButton("Guia Turismo");
         guiaTurismoBtn.setFont(fontPrincipal);
-        guiaTurismoBtn.setBounds(20, 430, 150, 30);
+        guiaTurismoBtn.setBounds(20, 370, 150, 30);
         guiaTurismoBtn.setBackground(Color.decode("#2c4536"));
         guiaTurismoBtn.setBorderPainted(false);
         guiaTurismoBtn.setOpaque(true);
@@ -123,10 +123,10 @@ public class Recepcion extends JFrame implements ActionListener {
         // nueguiaTurismoBtn.addActionListener(this);
         add(guiaTurismoBtn);
         
-        //Buscar Domo
+        //ListarDomo
         domosBtn = new JButton("Domos");
         domosBtn.setFont(fontPrincipal);
-        domosBtn.setBounds(20, 470, 150, 30);
+        domosBtn.setBounds(20, 410, 150, 30);
         domosBtn.setBackground(Color.decode("#2c4536"));
         domosBtn.setBorderPainted(false);
         domosBtn.setOpaque(true);
@@ -134,10 +134,21 @@ public class Recepcion extends JFrame implements ActionListener {
         domosBtn.addActionListener(this);
         add(domosBtn);
         
+        // Buscar Domo
+        buscarDomoBtn = new JButton("Buscar Domo");
+        buscarDomoBtn.setFont(fontPrincipal);
+        buscarDomoBtn.setBounds(20, 450, 150, 30);
+        buscarDomoBtn.setBackground(Color.decode("#2c4536"));
+        buscarDomoBtn.setBorderPainted(false);
+        buscarDomoBtn.setOpaque(true);
+        buscarDomoBtn.setForeground(Color.WHITE);
+        buscarDomoBtn.addActionListener(this);
+        add(buscarDomoBtn);
+        
         // Volver
         salirBtn = new JButton("Salir");
         salirBtn.setFont(fontPrincipal);
-        salirBtn.setBounds(20, 510, 150, 30);
+        salirBtn.setBounds(20, 490, 150, 30);
         salirBtn.setBackground(Color.decode("#2c4536"));
         salirBtn.setBorderPainted(false);
         salirBtn.setOpaque(true);
@@ -173,6 +184,9 @@ public class Recepcion extends JFrame implements ActionListener {
             } else if (ae.getSource() == huespedesBtn) {
                 setVisible(false);
                 new ListarHuespedes();
+            }  else if (ae.getSource() == buscarDomoBtn) {
+                setVisible(false);
+                new BuscarDomo();
             } 
     }
     
