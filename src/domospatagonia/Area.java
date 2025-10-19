@@ -8,27 +8,28 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-//###### Terminar Investigar mas sobre JTable y mejorar este modulo########
-
-
-
+// Aqui tiene que haber un filtro de empleados por Area TODO!
 /**
  *
  * @author martin
  */
-public class ListarDomos extends JFrame implements ActionListener{
+public class Area extends JFrame implements ActionListener{
     JButton volverBtn;
     
     //FakeData Domo
     // Data to be displayed in the JTable
     String[][] data = {
-            { "5", "Dispoible", "Limpio", "King", "1000" },
-            { "10", "Ocupado", "Desordenado", "Queen", "900" }};
+            { "Limpieza", "10", "Hernan", "Fulano", },
+            { "Admin", "16", "Juan", "Mengano"},
+            { "Guia Turismo", "23", "Ricardo", "Lopez"}, 
+            { "Limpieza", "7", "Jose", "Caciri"},
+            { "Guia Tursmo", "38", "Pedro", "Di Maria"}, 
+            };
     
     // Column Names
-    String[] columnNames = { "IdDomo", "Disponible", "estado limpieza", "Tipo de cama", "Precio" };
+    String[] columnNames = { "Area", "Empleado Id", "Nombre", "Apellido" };
 
-    public ListarDomos() {
+    public Area() {
         
     // set Frame
     setBounds(200, 200, 1020, 584);
@@ -84,6 +85,6 @@ public class ListarDomos extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new ListarDomos();
+        new Area();
     }
 }

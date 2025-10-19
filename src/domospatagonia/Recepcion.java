@@ -42,7 +42,7 @@ public class Recepcion extends JFrame implements ActionListener {
         areaBtn.setBorderPainted(false);
         areaBtn.setOpaque(true);
         areaBtn.setForeground(Color.WHITE);
-        // nuevoHuespedBtn.addActionListener(this);
+        areaBtn.addActionListener(this);
         add(areaBtn);
         setVisible(true);
         
@@ -54,7 +54,7 @@ public class Recepcion extends JFrame implements ActionListener {
         empleadosBtn.setBorderPainted(false);
         empleadosBtn.setOpaque(true);
         empleadosBtn.setForeground(Color.WHITE);
-        // nuevoHuespedBtn.addActionListener(this);
+        empleadosBtn.addActionListener(this);
         add(empleadosBtn);
        
         // Huespedes btn
@@ -65,7 +65,7 @@ public class Recepcion extends JFrame implements ActionListener {
         huespedesBtn.setBorderPainted(false);
         huespedesBtn.setOpaque(true);
         huespedesBtn.setForeground(Color.WHITE);
-        // nuehuespedesBtn.addActionListener(this);
+        huespedesBtn.addActionListener(this);
         add(huespedesBtn);
       
         // Usuario Admin btn
@@ -76,7 +76,7 @@ public class Recepcion extends JFrame implements ActionListener {
         usuarioAdminBtn.setBorderPainted(false);
         usuarioAdminBtn.setOpaque(true);
         usuarioAdminBtn.setForeground(Color.WHITE);
-        // nueusuarioAdminBtn.addActionListener(this);
+        usuarioAdminBtn.addActionListener(this);
         add(usuarioAdminBtn);
         
         // Checkout btn
@@ -154,13 +154,26 @@ public class Recepcion extends JFrame implements ActionListener {
     
         @Override
     public void actionPerformed(ActionEvent ae){
+        // quizas Cambiar por un switch
             if (ae.getSource() == nuevoHuespedBtn) {
                 setVisible(false);
                 new Huesped();
             } else if (ae.getSource() == domosBtn) {
                 setVisible(false);
                 new ListarDomos();
-            }
+            } else if (ae.getSource() == areaBtn) {
+                setVisible(false);
+                new Area();
+            } else if (ae.getSource() == empleadosBtn) {
+                setVisible(false);
+                new ListarEmpleados();
+            } else if (ae.getSource() == usuarioAdminBtn) {
+                setVisible(false);
+                new ListarUsuariosAdmin();
+            } else if (ae.getSource() == huespedesBtn) {
+                setVisible(false);
+                new ListarHuespedes();
+            } 
     }
     
     

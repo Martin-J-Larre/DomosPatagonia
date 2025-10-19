@@ -16,19 +16,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author martin
  */
-public class ListarDomos extends JFrame implements ActionListener{
+public class ListarEmpleados extends JFrame implements ActionListener{
     JButton volverBtn;
     
     //FakeData Domo
     // Data to be displayed in the JTable
     String[][] data = {
-            { "5", "Dispoible", "Limpio", "King", "1000" },
-            { "10", "Ocupado", "Desordenado", "Queen", "900" }};
+            { "55", "Juan", "Garcia", "3000000", "45", "Hombre", "123-123-456", "Guia Turismo", "Juancito@mail.com" },
+            { "40", "Jose", "Piero", "3400098", "32", "Hombre", "123-567-234", "Empleado Limpieza", "Josecito@mail.com" }};
     
     // Column Names
-    String[] columnNames = { "IdDomo", "Disponible", "estado limpieza", "Tipo de cama", "Precio" };
+    String[] columnNames = { "Id Empleado", "Nombre", "Apellido", "DNI", "Edad", "genero", "Teléfono", "Area", "Email" };
 
-    public ListarDomos() {
+    public ListarEmpleados() {
         
     // set Frame
     setBounds(200, 200, 1020, 584);
@@ -51,7 +51,7 @@ public class ListarDomos extends JFrame implements ActionListener{
     table.setFont(fontPrincipal);
     
     JScrollPane scrollPanel =  new JScrollPane(table);
-    scrollPanel.setBounds(300, 40, 500, 400);
+    scrollPanel.setBounds(10, 40, 1000, 400);
     
     add(scrollPanel);
     
@@ -84,6 +84,6 @@ public class ListarDomos extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new ListarDomos();
+        new ListarEmpleados();
     }
 }
