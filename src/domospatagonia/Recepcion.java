@@ -3,6 +3,8 @@ package domospatagonia;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
@@ -10,7 +12,7 @@ import javax.swing.*;
  *
  * @author martin
  */
-public class Recepcion extends JFrame{
+public class Recepcion extends JFrame implements ActionListener {
     JButton nuevoHuespedBtn, areaBtn, empleadosBtn, huespedesBtn, usuarioAdminBtn, checkoutBtn, actualizaStatusBtn, actualizarStatusDomoBtn, guiaTurismoBtn, buscarDomoBtn, salirBtn ;
 
     public Recepcion() {
@@ -29,7 +31,7 @@ public class Recepcion extends JFrame{
         nuevoHuespedBtn.setBorderPainted(false);
         nuevoHuespedBtn.setOpaque(true);
         nuevoHuespedBtn.setForeground(Color.WHITE);
-        // nuevoHuespedBtn.addActionListener(this);
+        nuevoHuespedBtn.addActionListener(this);
         add(nuevoHuespedBtn);
              
         // Area btn
@@ -132,7 +134,7 @@ public class Recepcion extends JFrame{
         // nueguiaTurismoBtn.addActionListener(this);
         add(buscarDomoBtn);
         
-        // Salir
+        // Volver
         salirBtn = new JButton("Salir");
         salirBtn.setFont(fontPrincipal);
         salirBtn.setBounds(20, 510, 150, 30);
@@ -148,6 +150,15 @@ public class Recepcion extends JFrame{
         setVisible(true);
         
         
+    }
+    
+        @Override
+    public void actionPerformed(ActionEvent ae){
+            if (ae.getSource() == nuevoHuespedBtn) {
+                setVisible(false);
+                new Huesped();
+            } else {
+            }
     }
     
     
