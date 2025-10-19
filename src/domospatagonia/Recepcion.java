@@ -13,7 +13,7 @@ import javax.swing.*;
  * @author martin
  */
 public class Recepcion extends JFrame implements ActionListener {
-    JButton nuevoHuespedBtn, areaBtn, empleadosBtn, huespedesBtn, usuarioAdminBtn, checkoutBtn, actualizaStatusBtn, actualizarStatusDomoBtn, guiaTurismoBtn, buscarDomoBtn, salirBtn ;
+    JButton nuevoHuespedBtn, areaBtn, empleadosBtn, huespedesBtn, usuarioAdminBtn, checkoutBtn, actualizaStatusBtn, actualizarStatusDomoBtn, guiaTurismoBtn, domosBtn, salirBtn ;
 
     public Recepcion() {
         setLayout(null);
@@ -124,15 +124,15 @@ public class Recepcion extends JFrame implements ActionListener {
         add(guiaTurismoBtn);
         
         //Buscar Domo
-        buscarDomoBtn = new JButton("Buscar Domo");
-        buscarDomoBtn.setFont(fontPrincipal);
-        buscarDomoBtn.setBounds(20, 470, 150, 30);
-        buscarDomoBtn.setBackground(Color.decode("#2c4536"));
-        buscarDomoBtn.setBorderPainted(false);
-        buscarDomoBtn.setOpaque(true);
-        buscarDomoBtn.setForeground(Color.WHITE);
-        // nueguiaTurismoBtn.addActionListener(this);
-        add(buscarDomoBtn);
+        domosBtn = new JButton("Domos");
+        domosBtn.setFont(fontPrincipal);
+        domosBtn.setBounds(20, 470, 150, 30);
+        domosBtn.setBackground(Color.decode("#2c4536"));
+        domosBtn.setBorderPainted(false);
+        domosBtn.setOpaque(true);
+        domosBtn.setForeground(Color.WHITE);
+        domosBtn.addActionListener(this);
+        add(domosBtn);
         
         // Volver
         salirBtn = new JButton("Salir");
@@ -157,7 +157,9 @@ public class Recepcion extends JFrame implements ActionListener {
             if (ae.getSource() == nuevoHuespedBtn) {
                 setVisible(false);
                 new Huesped();
-            } else {
+            } else if (ae.getSource() == domosBtn) {
+                setVisible(false);
+                new ListarDomos();
             }
     }
     

@@ -172,8 +172,8 @@ public class Huesped extends JFrame implements ActionListener{
     enviarBtn.addActionListener(this);
     add(enviarBtn);
         
-    //  BTN CANCELAR
-    volverBtn = new JButton("Cancelar");
+    //  BTN Volver
+    volverBtn = new JButton("Volver");
     volverBtn.setFont(fontPrincipal);
     volverBtn.setBounds(210, 430, 130, 30);
     volverBtn.setBackground(Color.decode("#3c5f4a"));
