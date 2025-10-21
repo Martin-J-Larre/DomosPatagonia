@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author martin
  */
-
+//TODO: Cambiar clase for el nombre checkin o solo en GUI
 public class Huesped extends JFrame implements ActionListener{
     
     JTextField nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, checkoutTextField;
@@ -143,7 +143,8 @@ public class Huesped extends JFrame implements ActionListener{
     checkoutLabel.setBounds(60, 350, 200, 30);
     add(checkoutLabel);
     
-    //Desabilitar checkoutTextField 
+    //Desabilitar checkoutTextField
+    //TODO: Poner un placeholder como en HTML que diga No check out o similar
     checkoutTextField = new JTextField();
     checkoutTextField.setBounds(140, 350, 200, 30);
     checkoutTextField.setEditable(false);
