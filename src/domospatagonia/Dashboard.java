@@ -4,7 +4,7 @@ package domospatagonia;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -72,21 +72,26 @@ public class Dashboard extends JFrame implements ActionListener{
         
         //Recepción
         JMenuBar menuBarRecepcion = new JMenuBar();
-        menuBarRecepcion.setBounds(100, 240, 150,30);
+        menuBarRecepcion.setBounds(100, 270, 150,30);
         add(menuBarRecepcion);
         
         JMenu menuRecepcion = new JMenu("Admin Domos");
         menuBarRecepcion.add(menuRecepcion);
         
-//        JMenuItem manejoDomos = new JMenuItem("");
-//        manejoDomos.addActionListener(this);
-//        menuRecepcion.add(manejoDomos);
                 
         JMenuItem recepcion = new JMenuItem("Recepción");
         recepcion.addActionListener(this);
         menuRecepcion.add(recepcion);
                    
         add(textBienvenida);    
+        
+        // Imagen por ahora
+        ImageIcon image1  = new ImageIcon(ClassLoader.getSystemResource("img/interior-test-1.png"));
+                Image image2 = image1.getImage().getScaledInstance(650, 470,Image.SCALE_DEFAULT);
+                ImageIcon image3 = new ImageIcon(image2);
+                JLabel lImage = new JLabel(image3);
+                lImage.setBounds(350,100,650,430);
+                add(lImage);
 
     setVisible(true);
     }

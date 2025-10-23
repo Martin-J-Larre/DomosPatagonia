@@ -18,6 +18,7 @@ public class DomosPatagonia extends JFrame implements ActionListener {
         setSize(1020, 584);
         setLocation(200, 200);
         setLayout(null);
+        setDefaultCloseOperation(DomosPatagonia.EXIT_ON_CLOSE);
         
         // Set Image
         ImageIcon imageInicio = new ImageIcon(ClassLoader.getSystemResource("img/inicio-img.png"));

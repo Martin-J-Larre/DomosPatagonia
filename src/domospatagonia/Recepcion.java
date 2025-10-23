@@ -23,21 +23,33 @@ public class Recepcion extends JFrame implements ActionListener {
         Font fontPrincipal = new Font("Arial", Font.BOLD, 14);
         
         // Poner titulo
-        // Nueveo Huésped btn
-        nuevoHuespedBtn = new JButton("Nuevo Huesped");
+        
+        // Agregar Huesped
+        nuevoHuespedBtn = new JButton("Agregar Huesped");
         nuevoHuespedBtn.setFont(fontPrincipal);
-        nuevoHuespedBtn.setBounds(20, 50, 150, 30);
+        nuevoHuespedBtn.setBounds(20, 50, 200, 30);
         nuevoHuespedBtn.setBackground(Color.decode("#2c4536"));
         nuevoHuespedBtn.setBorderPainted(false);
         nuevoHuespedBtn.setOpaque(true);
         nuevoHuespedBtn.setForeground(Color.WHITE);
         nuevoHuespedBtn.addActionListener(this);
         add(nuevoHuespedBtn);
+        
+        // Buscar Domo
+        buscarDomoBtn = new JButton("Buscar Domo");
+        buscarDomoBtn.setFont(fontPrincipal);
+        buscarDomoBtn.setBounds(20, 450, 200, 30);
+        buscarDomoBtn.setBackground(Color.decode("#2c4536"));
+        buscarDomoBtn.setBorderPainted(false);
+        buscarDomoBtn.setOpaque(true);
+        buscarDomoBtn.setForeground(Color.WHITE);
+        buscarDomoBtn.addActionListener(this);
+        add(buscarDomoBtn);
              
         // Area btn
-        areaBtn = new JButton("Area");
+        areaBtn = new JButton("Empleados por Area");
         areaBtn.setFont(fontPrincipal);
-        areaBtn.setBounds(20, 90, 150, 30);
+        areaBtn.setBounds(20, 90, 200, 30);
         areaBtn.setBackground(Color.decode("#2c4536"));
         areaBtn.setBorderPainted(false);
         areaBtn.setOpaque(true);
@@ -134,16 +146,7 @@ public class Recepcion extends JFrame implements ActionListener {
         domosBtn.addActionListener(this);
         add(domosBtn);
         
-        // Buscar Domo
-        buscarDomoBtn = new JButton("Buscar Domo");
-        buscarDomoBtn.setFont(fontPrincipal);
-        buscarDomoBtn.setBounds(20, 450, 150, 30);
-        buscarDomoBtn.setBackground(Color.decode("#2c4536"));
-        buscarDomoBtn.setBorderPainted(false);
-        buscarDomoBtn.setOpaque(true);
-        buscarDomoBtn.setForeground(Color.WHITE);
-        buscarDomoBtn.addActionListener(this);
-        add(buscarDomoBtn);
+
         
         // Volver
         salirBtn = new JButton("Salir");

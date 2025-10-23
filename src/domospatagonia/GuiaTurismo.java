@@ -43,64 +43,68 @@ public class GuiaTurismo extends JFrame implements ActionListener{
         Font fontPrincipal = new Font("Arial", Font.BOLD, 14);
         
         // TODO: Agregar Titulo
+        JLabel texto = new JLabel("Agregar Guía Turismo");
+        texto.setFont(new Font("Arial", Font.BOLD, 18));
+        texto.setBounds(400, 10, 400, 50);
+        add(texto);
         
         // Nro guía Turismo 
         JLabel numGuiaLabel = new JLabel("Guía Turismo Nro");
         numGuiaLabel.setFont(fontPrincipal);
-        numGuiaLabel.setBounds(60, 30, 200, 30);
+        numGuiaLabel.setBounds(360, 80, 200, 30);
         add(numGuiaLabel);
         
         numGuiaTextField = new JTextField();
-        numGuiaTextField.setBounds(200, 30, 200, 30);
+        numGuiaTextField.setBounds(500, 80, 200, 30);
         add(numGuiaTextField);
         
         
         // Especialidad
         JLabel especialidadLabel = new JLabel("Especialidad");
         especialidadLabel.setFont(fontPrincipal);
-        especialidadLabel.setBounds(60, 70, 200, 30);
+        especialidadLabel.setBounds(360, 120, 200, 30);
         add(especialidadLabel);
         
         especialidadTextField = new JTextField();
-        especialidadTextField.setBounds(200, 70, 200, 30);
+        especialidadTextField.setBounds(500, 120, 200, 30);
         add(especialidadTextField);
         
         // Temporada
         JLabel temporadaLabel = new JLabel("Temporada");
-        temporadaLabel.setBounds(60, 110, 220, 30);
+        temporadaLabel.setBounds(360, 160, 220, 30);
         temporadaLabel.setFont(fontPrincipal);
         add(temporadaLabel);
         
         String estaciones[] = {"Verano", "Otoño", "Primavera", "Invierno"};
         temporadaComboBox = new JComboBox(estaciones);
-        temporadaComboBox.setBounds(200, 110, 200, 30);
+        temporadaComboBox.setBounds(500, 160, 200, 30);
         add(temporadaComboBox);
         
         // Camioneta
         JLabel camionetaLabel = new JLabel("Camioneta");
         camionetaLabel.setFont(fontPrincipal);
-        camionetaLabel.setBounds(60, 150, 200, 30);
+        camionetaLabel.setBounds(360, 200, 200, 30);
         add(camionetaLabel);
         
         camionetaTextField = new JTextField();
-        camionetaTextField.setBounds(200, 150, 200, 30);
+        camionetaTextField.setBounds(500, 200, 200, 30);
         add(camionetaTextField);
         
         // Domo Asignado
         // ** ParseInt() **
         JLabel domoAsignadoLabel = new JLabel("Domo Asignado");
         domoAsignadoLabel.setFont(fontPrincipal);
-        domoAsignadoLabel.setBounds(60, 190, 200, 30);
+        domoAsignadoLabel.setBounds(360, 240, 200, 30);
         add(domoAsignadoLabel);
         
         domoAsignadoTextField = new JTextField();
-        domoAsignadoTextField.setBounds(200, 190, 200, 30);
+        domoAsignadoTextField.setBounds(500, 240, 200, 30);
         add(domoAsignadoTextField);
         
         // BTN ENVIAR
         enviarBtn = new JButton("Enviar");
         enviarBtn.setFont(fontPrincipal);
-        enviarBtn.setBounds(60, 240, 150, 30);
+        enviarBtn.setBounds(360, 290, 150, 30);
         enviarBtn.setBackground(Color.decode("#2c4536"));
         enviarBtn.setBorderPainted(false);
         enviarBtn.setOpaque(true);
@@ -111,7 +115,7 @@ public class GuiaTurismo extends JFrame implements ActionListener{
         //  BTN CANCELAR
         cancelarBtn = new JButton("Cancelar");
         cancelarBtn.setFont(fontPrincipal);
-        cancelarBtn.setBounds(250, 240, 150, 30);
+        cancelarBtn.setBounds(550, 290, 150, 30);
         cancelarBtn.setBackground(Color.decode("#3c5f4a"));
         cancelarBtn.setBorderPainted(false);
         cancelarBtn.setOpaque(true);
