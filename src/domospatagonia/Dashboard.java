@@ -15,18 +15,14 @@ import javax.swing.*;
  */
 public class Dashboard extends JFrame implements ActionListener{
 
+    JButton salirBtn;
+    
     public Dashboard() {
         setBounds(200, 200, 1020, 584);
         setLayout(null);
         
-//        // Crear Layout
-//        GridLayout gridLayout = new GridLayout(1, 1);
-//        setLayout(gridLayout);
-//        
-//        JPanel panel = new JPanel(null);
-//        panel.setBackground(new Color(10, 20, 30));
-//        panel.setBounds(0, 0, 500, 100);
-//        
+        // Fuente
+        Font fontPrincipal = new Font("Arial", Font.BOLD, 14);
         
         // Logo
         ImageIcon logoImg = new ImageIcon(ClassLoader.getSystemResource("img/logo.png"));
@@ -61,9 +57,17 @@ public class Dashboard extends JFrame implements ActionListener{
         empleado.addActionListener(this);
         menuAdmin.add(empleado);
         
+        JMenuItem empleadoLimpieza = new JMenuItem("Agregar Empleado limpieza");
+        empleadoLimpieza.addActionListener(this);
+        menuAdmin.add(empleadoLimpieza);
+        
         JMenuItem guiaTirismo = new JMenuItem("Agregar Guia Turismo");
         guiaTirismo.addActionListener(this);
         menuAdmin.add(guiaTirismo);
+        
+        JMenuItem usuarioAdmin = new JMenuItem("Agregar Usuario Administrador");
+        usuarioAdmin.addActionListener(this);
+        menuAdmin.add(usuarioAdmin);
         
         JMenuItem domos = new JMenuItem("Agregar Domos");
         domos.addActionListener(this);
@@ -83,15 +87,28 @@ public class Dashboard extends JFrame implements ActionListener{
         recepcion.addActionListener(this);
         menuRecepcion.add(recepcion);
                    
-        add(textBienvenida);    
+        add(textBienvenida); 
+        
+        
+        
+        // Salir
+        salirBtn = new JButton("Salir");
+        salirBtn.setFont(fontPrincipal);
+        salirBtn.setBounds(100, 340, 150, 30);
+        salirBtn.setBackground(Color.decode("#2c4536"));
+        salirBtn.setBorderPainted(false);
+        salirBtn.setOpaque(true);
+        salirBtn.setForeground(Color.WHITE);
+        salirBtn.addActionListener(this);
+        add(salirBtn);
         
         // Imagen por ahora
         ImageIcon image1  = new ImageIcon(ClassLoader.getSystemResource("img/interior-test-1.png"));
-                Image image2 = image1.getImage().getScaledInstance(650, 470,Image.SCALE_DEFAULT);
-                ImageIcon image3 = new ImageIcon(image2);
-                JLabel lImage = new JLabel(image3);
-                lImage.setBounds(350,100,650,430);
-                add(lImage);
+        Image image2 = image1.getImage().getScaledInstance(650, 470,Image.SCALE_DEFAULT);
+        ImageIcon image3 = new ImageIcon(image2);
+        JLabel lImage = new JLabel(image3);
+        lImage.setBounds(350,100,650,430);
+        add(lImage);
 
     setVisible(true);
     }
@@ -99,15 +116,28 @@ public class Dashboard extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Agregar Empleado")) {
+            
             new Empleado();
         } else if(ae.getActionCommand().equals("Agregar Domos")){
+            
             new Domo();
             // Todo lo referido a empleados agregar disparar desde area en form empleado
             // Cambiar menu dashboard
         } else if (ae.getActionCommand().equals("Agregar Guia Turismo")){
+            
             new GuiaTurismo();
         } else if (ae.getActionCommand().equals("Recepción")){
+            
             new Recepcion();
+        } else if (ae.getActionCommand().equals("Agregar Empleado limpieza")){
+            
+            new EmpleadoLimpieza();
+        } else if (ae.getActionCommand().equals("Agregar Usuario Administrador")){
+            
+            new UsuarioAdministrador();
+        } else if (ae.getActionCommand().equals("Salir")){
+            setVisible(false);
+            new DomosPatagonia();
         }
 }
     

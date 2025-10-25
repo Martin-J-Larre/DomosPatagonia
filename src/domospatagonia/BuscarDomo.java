@@ -20,6 +20,7 @@ public class BuscarDomo extends JFrame implements ActionListener{
     JButton volverBtn, buscarBtn;
     JComboBox tipoDeCamaCB;
     JCheckBox disponibleCheckBox;
+    JTextField nombreTextField, apellidoTextFiel, idHuespedTextFiel;
     
     //FakeData Domo
     // Data to be displayed in the JTable
@@ -64,6 +65,37 @@ public class BuscarDomo extends JFrame implements ActionListener{
     disponibleCheckBox.setBounds(150, 100, 150, 30);
     add(disponibleCheckBox);
     
+    // nombre huesped
+    JLabel nombreLabel = new JLabel("Nombre Huespéd");
+    nombreLabel.setFont(fontPrincipal);
+    nombreLabel.setBounds(50, 150, 200, 30);
+    add(nombreLabel);
+    
+    nombreTextField = new JTextField();
+    nombreTextField.setBounds(150, 150, 150, 30);
+    add(nombreTextField);
+    
+    // apellido huesped
+    JLabel apellidoLabel = new JLabel("Apellido Huésped");
+    apellidoLabel.setFont(fontPrincipal);
+    apellidoLabel.setBounds(50, 200, 200, 30);
+    add(apellidoLabel);
+    
+    apellidoTextFiel = new JTextField();
+    apellidoTextFiel.setBounds(150, 200, 150, 30);
+    add(apellidoTextFiel);
+    
+    // Id Huesped
+    // Traer de BBDD despues de agregar el huesped en Checkin
+    JLabel idHuespedLabel = new JLabel("Id Huésped");
+    idHuespedLabel.setFont(fontPrincipal);
+    idHuespedLabel.setBounds(50, 250, 200, 30);
+    add(idHuespedLabel);
+    
+    idHuespedTextFiel = new JTextField();
+    idHuespedTextFiel.setBounds(150, 250, 150, 30);
+    add(idHuespedTextFiel);
+    
     //Tabla
     DefaultTableModel model = new DefaultTableModel(data, columnNames);
     
@@ -82,6 +114,19 @@ public class BuscarDomo extends JFrame implements ActionListener{
 //    }
 //    
 
+
+        //  BTN Volver
+    volverBtn = new JButton("Asignar Domo");
+    volverBtn.setFont(fontPrincipal);
+    volverBtn.setBounds(200, 350, 130, 30);
+    volverBtn.setBackground(Color.decode("#3c5f4a"));
+    volverBtn.setBorderPainted(false);
+    volverBtn.setOpaque(true);
+    volverBtn.setForeground(Color.decode("#939393"));
+    // volverBtn.addActionListener(this);
+    add(volverBtn);
+    setVisible(true);
+    
     //  BTN Volver
     volverBtn = new JButton("Volver");
     volverBtn.setFont(fontPrincipal);

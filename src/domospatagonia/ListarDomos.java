@@ -1,4 +1,4 @@
-
+//
 package domospatagonia;
 
 import javax.swing.*;
@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-//###### Terminar Investigar mas sobre JTable y mejorar este modulo########
+//###### Todo: Conectar con cada domo con su fotos ########
 
 
 
