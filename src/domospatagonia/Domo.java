@@ -1,25 +1,18 @@
 
 package domospatagonia;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-/**
- *
- * @author martin
- */
 public class Domo extends JFrame implements ActionListener{
     JTextField idDomoTextField, tipoDeCamaTextField, amenitiesTextField, serviciosTextField, precioTextField;
     JComboBox disponibleComboBox;
     JRadioButton limpioRadioBtn, desordenadoRadioBtn;
     JButton enviarBtn, cancelarBtn;
     
-    
-    
-            
+               
             
     public Domo() {
         setLayout(null);
@@ -45,7 +38,7 @@ public class Domo extends JFrame implements ActionListener{
         add(idDomoTextField);
         
         
-        // Nro ID DOMO
+         Tipo de cama
         JLabel tipoDeCamaLabel = new JLabel("Tipo de cama");
         tipoDeCamaLabel.setFont(fontPrincipal);
         tipoDeCamaLabel.setBounds(360, 110, 200, 30);
@@ -140,8 +133,6 @@ public class Domo extends JFrame implements ActionListener{
         cancelarBtn.addActionListener(this);
         add(cancelarBtn);
         
-        //TODO: MAYBE AGREGAR IMAGENES DINAMICAMENTE desde input
-        
         
         setVisible(true);
     }
@@ -150,7 +141,6 @@ public class Domo extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         
         if (ae.getSource() == enviarBtn) {
-            // limpioRadioBtn, desordenadoRadioBtn
             String idDomo = idDomoTextField.getText();
             String tipoDeCama = tipoDeCamaTextField.getText();
             String amenities = amenitiesTextField.getText();
@@ -168,7 +158,7 @@ public class Domo extends JFrame implements ActionListener{
                 // else "Mandar un alerta selecionar un radio Btn
                 
             try {
-                // Logica BBDD Supongo, pronto sabremos
+                // Logica BBDD 
                 JOptionPane.showMessageDialog(null,"Nuevo Domo agregrado exitosamente");
                 
                 setVisible(false);
