@@ -2,29 +2,56 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class DashboardView extends JFrame {
-    private JPanel panelIzquierdo;
-    private JPanel panelDerecho;
+    public JButton btnPanel1 = new JButton("Administrar empleados");
+    public JButton btnPanel2 = new JButton("Administrar domos");
+    public JPanel panelContenido = new JPanel(new CardLayout());
 
-    public DashboardView(String usuario) {
-        setTitle("Panel Principal - Usuario: " + usuario);
-        setSize(800, 500);
+    public DashboardView() {
+        setTitle("Dashboard");
+        setSize(1000, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
 
-        panelIzquierdo = new JPanel();
-        panelIzquierdo.setBackground(new Color(220, 220, 250));
-        panelIzquierdo.setPreferredSize(new Dimension(200, 0));
-        panelIzquierdo.add(new JLabel("Menú"));
+        // Menu 
+        JPanel panelSuperior = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        panelSuperior.setBackground(Color.LIGHT_GRAY);
+        panelSuperior.add(btnPanel1);
+        panelSuperior.add(btnPanel2);
 
-        panelDerecho = new JPanel(new BorderLayout());
-        panelDerecho.add(new JLabel("Contenido principal", SwingConstants.CENTER), BorderLayout.CENTER);
+        // Panel Administrar empleados
+        PanelAdministrarEmpleados panelEmpleados = new PanelAdministrarEmpleados();
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelIzquierdo, panelDerecho);
-        splitPane.setDividerLocation(200);
-        splitPane.setDividerSize(5);
+        // Panel Administrar domos 
+        PanelAdministrarDomos panelDomos = new PanelAdministrarDomos();
 
-        add(splitPane);
+        // Agregar ambos paneles al CardLayout
+        panelContenido.add(panelEmpleados, "empleados");
+        panelContenido.add(panelDomos, "domos");
+
+        // Listener para cambiar entre paneles
+        btnPanel1.addActionListener(e -> mostrarPanel("empleados"));
+        btnPanel2.addActionListener(e -> mostrarPanel("domos"));
+
+        // cargar primer panel
+        CardLayout cl = (CardLayout) panelContenido.getLayout();
+        cl.show(panelContenido, "empleados");
+
+        // Agregar al frame 
+        add(panelSuperior, BorderLayout.NORTH);
+        add(panelContenido, BorderLayout.CENTER);
+    }
+
+    private void mostrarPanel(String nombre) {
+        CardLayout cl = (CardLayout) panelContenido.getLayout();
+        cl.show(panelContenido, nombre);
+    }
+
+    public void addMenuListeners(ActionListener listener) {
+        btnPanel1.addActionListener(listener);
+        btnPanel2.addActionListener(listener);
     }
 }

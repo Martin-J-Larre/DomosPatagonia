@@ -20,7 +20,7 @@ public class InicioSesionController {
                 String contrasenia = vista.contraseniaTextField.getText();
                 if (modelo.validarUsuario(usuario, contrasenia)) {
                     vista.dispose();
-                    new DashboardController();
+                    new DashboardController(new DashboardView());
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
                 }
