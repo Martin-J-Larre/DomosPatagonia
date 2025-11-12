@@ -10,6 +10,7 @@ public class VentanaInicioController {
         vista = new VentanaInicioView();
         vista.getIngresarBtn().addActionListener(e -> {
             vista.dispose();
+            new InicioSesionController();
         });
         vista.setVisible(true);
     }
