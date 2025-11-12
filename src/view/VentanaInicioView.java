@@ -2,9 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class VentanaInicioView extends JFrame {
-    private JButton ingresarBtn;
+    public JButton ingresarBtn;
 
     public VentanaInicioView() {
         setTitle("Domos Patagonia");
@@ -32,8 +33,8 @@ public class VentanaInicioView extends JFrame {
         setVisible(true);
     }
 
-    public JButton getIngresarBtn() {
-        return ingresarBtn;
+    public void addIngresarListener(ActionListener listener) {
+        ingresarBtn.addActionListener(listener);
     }
 }
 
