@@ -3,9 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelEmpleadoAdmin extends JPanel {
+    JTextField idEmpLimpTextField, horDeJornadaTextField, horDeEntradaTextField;
+    JTextField horDeSalidaTextField, diasJornadaTextField, salarioTextField;
+    
     public PanelEmpleadoAdmin(CardLayout cl, JPanel parent) {
         setLayout(new BorderLayout());
-
+        
         JLabel lbl = new JLabel("Formulario para agregar Usuario Admin", SwingConstants.CENTER);
         lbl.setFont(new Font("Arial", Font.BOLD, 18));
         add(lbl, BorderLayout.CENTER);
