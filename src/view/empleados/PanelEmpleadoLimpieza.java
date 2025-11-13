@@ -62,43 +62,6 @@ public class PanelEmpleadoLimpieza extends JPanel {
             panelForm.add(textFiels[i], gbc);
         }
         
-        
-        
-//        // Fila 1
-//        gbc.gridx = 0; gbc.gridy = 0;
-//        panelForm.add(new JLabel("Empleado Limpieza Nro:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(idEmpLimpTextField, gbc);
-//
-//        // Fila 2
-//        gbc.gridx = 0; gbc.gridy = 1;
-//        panelForm.add(new JLabel("Horario Jornada:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(horDeJornadaTextField, gbc);
-//
-//        // Fila 3
-//        gbc.gridx = 0; gbc.gridy = 2;
-//        panelForm.add(new JLabel("Hora de entrada:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(horDeEntradaTextField, gbc);
-//
-//        // Fila 4
-//        gbc.gridx = 0; gbc.gridy = 3;
-//        panelForm.add(new JLabel("Hora de salida:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(diasJornadaTextField, gbc);
-//
-//        // Fila 5
-//        gbc.gridx = 0; gbc.gridy = 4;
-//        panelForm.add(new JLabel("Días de Jornada:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(diasJornadaTextField, gbc);
-//
-//        // Fila 6
-//        gbc.gridx = 0; gbc.gridy = 5;
-//        panelForm.add(new JLabel("Salario:"), gbc);
-//        gbc.gridx = 1;
-//        panelForm.add(salarioTextField, gbc);
 
         add(panelForm, BorderLayout.CENTER);
 
@@ -178,9 +141,3 @@ public class PanelEmpleadoLimpieza extends JPanel {
 
 
 
-
-        // Acción del botón volver ====> #### Este volvería al formulario Empleados!!!!! ######
-        // volverBtn.addActionListener(e -> cl.show(parent, "inicio"));
-
-        // TODO: Hacer un metodo para que se maneje del controller y manejar el envio \a la BBDD por ahí.
-        // Por Ahora simularlo así

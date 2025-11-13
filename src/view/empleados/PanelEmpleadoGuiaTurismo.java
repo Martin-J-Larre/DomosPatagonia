@@ -8,7 +8,7 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
 
     private JTextField numGuiaTextField, especialidadTextField, camionetaTextField, domoAsignadoTextField;
     private JComboBox<String> temporadaComboBox;
-    private JButton enviarBtn, cancelarBtn;
+    private JButton enviarBtn, volverBtn;
     
 
     public PanelEmpleadoGuiaTurismo(CardLayout cl, JPanel parent) {
@@ -74,10 +74,10 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
         panelBotones.setBackground(Color.WHITE);
 
         enviarBtn = new JButton("Enviar");
-        cancelarBtn = new JButton("Volver al inicio");
+        volverBtn = new JButton("Volver al formulario Empleado");
 
         // Escucha el evento en el botón "Volver" y vuelve al form empleado principal
-        cancelarBtn.addActionListener(e -> cl.show(parent, "inicio"));
+        volverBtn.addActionListener(e -> cl.show(parent, "inicio"));
 
         // Escucha del botón "Enviar" → guarda datos en BBDD para Empleado
         enviarBtn.addActionListener(e -> {
@@ -115,7 +115,7 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
         });
 
         panelBotones.add(enviarBtn);
-        panelBotones.add(cancelarBtn);
+        panelBotones.add(volverBtn);
 
         add(panelBotones, BorderLayout.SOUTH);
     }

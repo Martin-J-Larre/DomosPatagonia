@@ -54,7 +54,7 @@ public class PanelEmpleadoInicio extends JPanel {
         areaComboBox = new JComboBox<>(areas);
         areaComboBox.setPreferredSize(new Dimension(220, 25));
 
-        // 🔹 Etiquetas y componentes
+        
         String[] lbls = {"Nombre:","Apellido:" , "DNI:", "Edad:", "Género:", "Teléfono:", "Email:", "Área:", "Turno:"};
         Component[] textFiels = {
             nombreTextField, apellidoTextField, dniTextField, edadTextField,
@@ -83,7 +83,7 @@ public class PanelEmpleadoInicio extends JPanel {
         return (String) areaComboBox.getSelectedItem();
     }
 
-    // 🔹 Método para limpiar los campos
+    // Método para limpiar los campos
     public static void resetCampos() {
         apellidoTextField.setText("");
         nombreTextField.setText("");

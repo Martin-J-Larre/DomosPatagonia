@@ -1,7 +1,7 @@
 package controller;
 
 import model.EmpleadoInicioModel;
-import model.EmpleadoLimpiezaModel;
+import model.EmpleadoModel;
 
 public class EmpleadoLimpiezaController {
 
@@ -19,7 +19,7 @@ public class EmpleadoLimpiezaController {
 
         // 2do se guardan los datos del empleado de limpieza (En el caso que sea de limpieza el emplado)
         // se cargan las dos tablas desde el boton en el panel 2
-        EmpleadoLimpiezaModel empleadoLimpieza = new EmpleadoLimpiezaModel(id_empleado_limpieza, horario_de_jornada, horario_entrada, horario_salida, dias_de_jornda, salario);
+        EmpleadoModel empleadoLimpieza = new EmpleadoModel(id_empleado_limpieza, horario_de_jornada, horario_entrada, horario_salida, dias_de_jornda, salario);
         return empleadoLimpieza.crearEmpleadoLimpieza();
     }
 }
