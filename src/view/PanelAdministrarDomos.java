@@ -12,8 +12,8 @@ public class PanelAdministrarDomos extends JPanel {
         JPanel panelDerecho = new JPanel(clPanel);
 
         // Crear paneles 
-//        PanelDomoInicio inicio = new PanelDomoInicio();
-        PanelCheckin d1 = new PanelCheckin(clPanel, panelDerecho);
+        PanelDomoInicio inicio = new PanelDomoInicio();
+        PanelCheckin panelCheckin = new PanelCheckin(clPanel, panelDerecho);
         PanelBuscarDomo d2 = new PanelBuscarDomo(clPanel, panelDerecho);
         PanelListarDomos d3 = new PanelListarDomos(clPanel, panelDerecho);
         PanelListarHuespedes d4 = new PanelListarHuespedes(clPanel, panelDerecho);
@@ -25,8 +25,8 @@ public class PanelAdministrarDomos extends JPanel {
         PanelActualizarLimpiezaDomo d10 = new PanelActualizarLimpiezaDomo(clPanel, panelDerecho);
 
         // Añadir al  CardLayout
-//        panelDerecho.add(inicio, "inicio");
-        panelDerecho.add(d1, "panel1");
+        panelDerecho.add(inicio, "inicio");
+        panelDerecho.add(panelCheckin, "Checkin");
         panelDerecho.add(d2, "panel2");
         panelDerecho.add(d3, "panel3");
         panelDerecho.add(d4, "panel4");
@@ -48,16 +48,18 @@ public class PanelAdministrarDomos extends JPanel {
 
         JPanel botonesMenu = new JPanel(new GridLayout(10, 1, 5, 5));
         JButton[] botones = new JButton[10];
+        String[] nombrePanel = {"Checkin", "panel2", "panel3", "panel4", "panel5", "panel6", "panel7", "panel8", "panel9", "panel10"};
         for (int i = 0; i < 10; i++) {
             botones[i] = new JButton("Domo " + (i + 1));
             final int index = i + 1;
-            botones[i].addActionListener(e -> clPanel.show(panelDerecho, "panel" + index));
+            String panel = nombrePanel[i];
+            botones[i].addActionListener(e -> clPanel.show(panelDerecho, panel));
             botonesMenu.add(botones[i]);
         }
         menuIzquierdo.add(botonesMenu, BorderLayout.CENTER);
 
         // Panel que se carga primero
-//        clPanel.show(panelDerecho, "inicio");
+        clPanel.show(panelDerecho, "inicio");
 
         add(menuIzquierdo, BorderLayout.WEST);
         add(panelDerecho, BorderLayout.CENTER);
