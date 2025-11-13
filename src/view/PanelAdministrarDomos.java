@@ -10,9 +10,11 @@ public class PanelAdministrarDomos extends JPanel {
         // CardLayout para la derecha
         CardLayout clPanel = new CardLayout();
         JPanel panelDerecho = new JPanel(clPanel);
-
+        
+ 
         // Crear paneles 
-        PanelDomoInicio inicio = new PanelDomoInicio();
+        PanelDomoInicio panelInicio = new PanelDomoInicio(clPanel, panelDerecho);
+        PanelCrearDomo panelCrearDomo = new PanelCrearDomo(clPanel, panelDerecho);
         PanelCheckin panelCheckin = new PanelCheckin(clPanel, panelDerecho);
         PanelBuscarDomo d2 = new PanelBuscarDomo(clPanel, panelDerecho);
         PanelListarDomos d3 = new PanelListarDomos(clPanel, panelDerecho);
@@ -25,7 +27,8 @@ public class PanelAdministrarDomos extends JPanel {
         PanelActualizarLimpiezaDomo d10 = new PanelActualizarLimpiezaDomo(clPanel, panelDerecho);
 
         // Añadir al  CardLayout
-        panelDerecho.add(inicio, "inicio");
+        panelDerecho.add(panelInicio, "inicio");
+        panelDerecho.add(panelCrearDomo, "crearDomo");
         panelDerecho.add(panelCheckin, "Checkin");
         panelDerecho.add(d2, "panel2");
         panelDerecho.add(d3, "panel3");

@@ -48,9 +48,9 @@ public class DomoModel {
     }
     
     // add tipo_de_cama
-    public void crearDomo(int domo_id, String disponibilidad, String limpieza, int precio,
+    public void crearDomo(int domo_id, String disponibilidad, String limpieza, String tipo_de_cama, int precio,
                           String amenities, String servicios) {
-        String sql = "INSERT INTO domo (id_domo, disponibilidad, limpieza_status, precio, amenities, servicios) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO domo (id_domo, disponibilidad, limpieza_status, tipo_de_cama, precio, amenities, servicios) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexion.conectar();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -58,9 +58,10 @@ public class DomoModel {
             ps.setInt(1, domo_id);
             ps.setString(2, disponibilidad);
             ps.setString(3, limpieza);
-            ps.setInt(4, precio);
-            ps.setString(5, amenities);
-            ps.setString(6, servicios);
+            ps.setString(4, tipo_de_cama);
+            ps.setInt(5, precio);
+            ps.setString(6, amenities);
+            ps.setString(7, servicios);
             ps.executeUpdate();
 
         } catch (SQLException e) {

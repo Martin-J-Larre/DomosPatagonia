@@ -20,8 +20,8 @@ public class DomoController {
                 checkInStatus, checkOutStatus, deposito);
     }
     
-        public void crearDomo(int id_domo, String disponibilidad, String limpieza, int precio,
+        public void crearDomo(int id_domo, String disponibilidad, String limpieza, String tipoDeCama, int precio,
                           String amenities, String servicios) {
-        model.crearDomo(id_domo, disponibilidad, limpieza, precio, amenities, servicios);
+        model.crearDomo(id_domo, disponibilidad, limpieza, tipoDeCama, precio, amenities, servicios);
     }
 }

@@ -4,15 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import controller.DomoController;
 
-// *************************************** //
-// Todo: 1 Array con opciones comboBox 
-// Add: tipo_de_cama
-// *************************************** //
 
 public class PanelCrearDomo extends JPanel {
 
-    private JTextField domoIdTextField,disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField, tipoDeCama;
+    private JTextField domoIdTextField,disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField;
     private JComboBox<String> limpiezaComboBox;
+    private JComboBox<String> tipoDeCamaComboBox;
     private JButton enviarBtn, volverBtn;
 
     public PanelCrearDomo(CardLayout cl, JPanel parent) {
@@ -38,12 +35,14 @@ public class PanelCrearDomo extends JPanel {
         disponibilidadTextField = new JTextField(20);
         String[] limpiezaOpciones = {"Ordenado", "Desordenado"};
         limpiezaComboBox = new JComboBox<>(limpiezaOpciones);
+        String[] camaOpciones = {"Standar", "King", "Queen"};
+        tipoDeCamaComboBox = new JComboBox<>(camaOpciones);
         precioTextField = new JTextField(20);
         amenitiesTextField = new JTextField(20);
         serviciosTextField = new JTextField(20);
 
-        String[] lbls = {"Domo Id", "Disponibilidad", "Limpieza Status", "Precio", "Amenities", "Servicios"};
-        Component[] TextFields = {domoIdTextField, disponibilidadTextField, limpiezaComboBox, precioTextField, amenitiesTextField, serviciosTextField};
+        String[] lbls = {"Domo Id", "Disponibilidad", "Limpieza Status", "Tipo de cama", "Precio", "Amenities", "Servicios"};
+        Component[] TextFields = {domoIdTextField, disponibilidadTextField, limpiezaComboBox, tipoDeCamaComboBox, precioTextField, amenitiesTextField, serviciosTextField};
 
         for (int i = 0; i < lbls.length; i++) {
             gbc.gridx = 0; gbc.gridy = i;
@@ -70,12 +69,13 @@ public class PanelCrearDomo extends JPanel {
                 int domoId = Integer.parseInt(domoIdTextField.getText());
                 String disponibilidad = disponibilidadTextField.getText();
                 String limpieza = (String) limpiezaComboBox.getSelectedItem();
+                String tipoCama = (String) tipoDeCamaComboBox.getSelectedItem();
                 int precio = Integer.parseInt(precioTextField.getText());
                 String amenities = amenitiesTextField.getText();
                 String servicios = serviciosTextField.getText();
 
                 DomoController controller = new DomoController();
-                controller.crearDomo(domoId, disponibilidad, limpieza, precio, amenities, servicios);
+                controller.crearDomo(domoId, disponibilidad, limpieza, tipoCama, precio, amenities, servicios);
 
                 JOptionPane.showMessageDialog(this, "Domo creado correctamente.");
                 limpiarCampos();
@@ -94,6 +94,7 @@ public class PanelCrearDomo extends JPanel {
         domoIdTextField.setText("");
         disponibilidadTextField.setText("");
         limpiezaComboBox.setSelectedIndex(0);
+        tipoDeCamaComboBox.setSelectedIndex(0);
         precioTextField.setText("");
         amenitiesTextField.setText("");
         serviciosTextField.setText("");
