@@ -19,4 +19,9 @@ public class DomoController {
         model.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais,
                 checkInStatus, checkOutStatus, deposito);
     }
+    
+        public void crearDomo(int id_domo, String disponibilidad, String limpieza, int precio,
+                          String amenities, String servicios) {
+        model.crearDomo(id_domo, disponibilidad, limpieza, precio, amenities, servicios);
+    }
 }

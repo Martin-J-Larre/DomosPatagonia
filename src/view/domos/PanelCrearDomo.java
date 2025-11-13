@@ -6,14 +6,12 @@ import controller.DomoController;
 
 // *************************************** //
 // Todo: 1 Array con opciones comboBox 
-// 2 - método crearDomo en Domo controller
-// 3 - método crearDomo en Domo Model
-// 4 - Actualizar PanelDomo Admin
+// Add: tipo_de_cama
 // *************************************** //
 
 public class PanelCrearDomo extends JPanel {
 
-    private JTextField disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField;
+    private JTextField domoIdTextField,disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField, tipoDeCama;
     private JComboBox<String> limpiezaComboBox;
     private JButton enviarBtn, volverBtn;
 
@@ -34,7 +32,9 @@ public class PanelCrearDomo extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-
+        
+        // Texts fiels/campos
+        domoIdTextField = new JTextField(20);
         disponibilidadTextField = new JTextField(20);
         String[] limpiezaOpciones = {"Ordenado", "Desordenado"};
         limpiezaComboBox = new JComboBox<>(limpiezaOpciones);
@@ -42,8 +42,8 @@ public class PanelCrearDomo extends JPanel {
         amenitiesTextField = new JTextField(20);
         serviciosTextField = new JTextField(20);
 
-        String[] lbls = {"Disponibilidad", "Limpieza Status", "Precio", "Amenities", "Servicios"};
-        Component[] TextFields = {disponibilidadTextField, limpiezaComboBox, precioTextField, amenitiesTextField, serviciosTextField};
+        String[] lbls = {"Domo Id", "Disponibilidad", "Limpieza Status", "Precio", "Amenities", "Servicios"};
+        Component[] TextFields = {domoIdTextField, disponibilidadTextField, limpiezaComboBox, precioTextField, amenitiesTextField, serviciosTextField};
 
         for (int i = 0; i < lbls.length; i++) {
             gbc.gridx = 0; gbc.gridy = i;
@@ -67,6 +67,7 @@ public class PanelCrearDomo extends JPanel {
         // Escucha enviar, captura data y va a controller y BBDD
         enviarBtn.addActionListener(e -> {
             try {
+                int domoId = Integer.parseInt(domoIdTextField.getText());
                 String disponibilidad = disponibilidadTextField.getText();
                 String limpieza = (String) limpiezaComboBox.getSelectedItem();
                 int precio = Integer.parseInt(precioTextField.getText());
@@ -74,7 +75,7 @@ public class PanelCrearDomo extends JPanel {
                 String servicios = serviciosTextField.getText();
 
                 DomoController controller = new DomoController();
-                controller.crearDomo(disponibilidad, limpieza, precio, amenities, servicios);
+                controller.crearDomo(domoId, disponibilidad, limpieza, precio, amenities, servicios);
 
                 JOptionPane.showMessageDialog(this, "Domo creado correctamente.");
                 limpiarCampos();
@@ -90,6 +91,7 @@ public class PanelCrearDomo extends JPanel {
     }
 
     private void limpiarCampos() {
+        domoIdTextField.setText("");
         disponibilidadTextField.setText("");
         limpiezaComboBox.setSelectedIndex(0);
         precioTextField.setText("");
