@@ -4,10 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import controller.DomoController;
 
+// ####### Todo #####
+// Cambiar JTextFiel por un JCombo EmpleadoLimpiezaAsignado, Este tiene 
+// tener acceso a los id_empleado_lipieza para agregar sus ids al Jcombo
+// Y desde ahi selecionar el empleado Limpieza para ese domo
 
 public class PanelCrearDomo extends JPanel {
 
-    private JTextField domoIdTextField,disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField;
+    private JTextField domoIdTextField,disponibilidadTextField, precioTextField, amenitiesTextField, serviciosTextField,empLimAsignadotTxtField;
     private JComboBox<String> limpiezaComboBox;
     private JComboBox<String> tipoDeCamaComboBox;
     private JButton enviarBtn, volverBtn;
@@ -40,9 +44,10 @@ public class PanelCrearDomo extends JPanel {
         precioTextField = new JTextField(20);
         amenitiesTextField = new JTextField(20);
         serviciosTextField = new JTextField(20);
+        empLimAsignadotTxtField = new JTextField(20);
 
-        String[] lbls = {"Domo Id", "Disponibilidad", "Limpieza Status", "Tipo de cama", "Precio", "Amenities", "Servicios"};
-        Component[] TextFields = {domoIdTextField, disponibilidadTextField, limpiezaComboBox, tipoDeCamaComboBox, precioTextField, amenitiesTextField, serviciosTextField};
+        String[] lbls = {"Domo Id", "Disponibilidad", "Limpieza Status", "Tipo de cama", "Precio", "Amenities", "Servicios", "Empleado Limpieza"};
+        Component[] TextFields = {domoIdTextField, disponibilidadTextField, limpiezaComboBox, tipoDeCamaComboBox, precioTextField, amenitiesTextField, serviciosTextField, empLimAsignadotTxtField};
 
         for (int i = 0; i < lbls.length; i++) {
             gbc.gridx = 0; gbc.gridy = i;
@@ -73,9 +78,10 @@ public class PanelCrearDomo extends JPanel {
                 int precio = Integer.parseInt(precioTextField.getText());
                 String amenities = amenitiesTextField.getText();
                 String servicios = serviciosTextField.getText();
+                int empLimAsignado = Integer.parseInt(empLimAsignadotTxtField.getText());
 
                 DomoController controller = new DomoController();
-                controller.crearDomo(domoId, disponibilidad, limpieza, tipoCama, precio, amenities, servicios);
+                controller.crearDomo(domoId, disponibilidad, limpieza, tipoCama, precio, amenities, servicios, empLimAsignado);
 
                 JOptionPane.showMessageDialog(this, "Domo creado correctamente.");
                 limpiarCampos();
@@ -98,5 +104,6 @@ public class PanelCrearDomo extends JPanel {
         precioTextField.setText("");
         amenitiesTextField.setText("");
         serviciosTextField.setText("");
+        empLimAsignadotTxtField.setText("");
     }
 }
