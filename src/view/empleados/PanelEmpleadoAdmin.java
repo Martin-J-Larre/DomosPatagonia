@@ -6,7 +6,7 @@ import controller.EmpleadoController;
 
 public class PanelEmpleadoAdmin extends JPanel {
 
-    private JTextField adminNumTextField, credencialTextField, idiomasTextField, tituloTextField, domoAsignadoTextField;
+    private JTextField adminNumTextField, credencialTextField, idiomasTextField, tituloTextField, domoAsignadoTextField, huespedAsignado;
     private JButton enviarBtn, volverBtn;
   
 
@@ -34,13 +34,15 @@ public class PanelEmpleadoAdmin extends JPanel {
         idiomasTextField = new JTextField(20);
         tituloTextField = new JTextField(20);
         domoAsignadoTextField = new JTextField(20);
+        huespedAsignado = new JTextField(20);
 
         String[] lbls = {
-            "Num Empleado Admin:",
-            "Credenciales:",
-            "Idiomas:",
-            "Título:",
-            "Domo Asignado:"
+            "Num Empleado Admin",
+            "Credenciales",
+            "Idiomas",
+            "Título",
+            "Domo Asignado",
+            "Huésped Asignado"
         };
 
         JTextField[] Textfiels = {
@@ -48,7 +50,8 @@ public class PanelEmpleadoAdmin extends JPanel {
             credencialTextField,
             idiomasTextField,
             tituloTextField,
-            domoAsignadoTextField
+            domoAsignadoTextField,
+            huespedAsignado
         };
 
         for (int i = 0; i < lbls.length; i++) {
@@ -90,11 +93,12 @@ public class PanelEmpleadoAdmin extends JPanel {
                 String idiomas = idiomasTextField.getText();
                 String titulo = tituloTextField.getText();
                 int domoAsignado = Integer.parseInt(domoAsignadoTextField.getText());
+                int huespedAsignado = Integer.parseInt(this.huespedAsignado.getText());
 
                 // Guardar en BD mediante el controlador
                 EmpleadoController controller = new EmpleadoController();
                 controller.agregarEmpleadoAdmin(apellido, nombre, dni, edad, genero, telefono, email, area, turno,
-                        idUsuarioAdmin, credenciales, idiomas, titulo, domoAsignado);
+                        idUsuarioAdmin, credenciales, idiomas, titulo, domoAsignado, huespedAsignado);
 
                 JOptionPane.showMessageDialog(this, "Empleado Administrador agregado correctamente.");
                 limpiarCampos();
@@ -116,6 +120,7 @@ public class PanelEmpleadoAdmin extends JPanel {
         idiomasTextField.setText("");
         tituloTextField.setText("");
         domoAsignadoTextField.setText("");
+        huespedAsignado.setText("");
     }
 }
 

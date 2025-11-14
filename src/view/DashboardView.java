@@ -11,19 +11,24 @@ public class DashboardView extends JFrame {
 
     public DashboardView() {
         setTitle("Dashboard");
-        setSize(1000, 600);
+        // getContentPane().setBackground(Color.decode("#72b48c"));
+        setSize(1020, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         // Menu 
-        JPanel panelSuperior = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        panelSuperior.setBackground(Color.LIGHT_GRAY);
+        JPanel panelSuperior = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelSuperior.setBackground(Color.decode("#72b48c"));
+        
+        // Btn Menu
         panelSuperior.add(btnPanel1);
         panelSuperior.add(btnPanel2);
-
+        
+        // #ccffe0
         // Panel Administrar empleados
         PanelAdministrarEmpleados panelEmpleados = new PanelAdministrarEmpleados();
+       
 
         // Panel Administrar domos 
         PanelAdministrarDomos panelDomos = new PanelAdministrarDomos();

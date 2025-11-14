@@ -18,7 +18,7 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
         // Título
         JLabel lblTitulo = new JLabel("Agregar Guía de Turismo", SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
-        lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        lblTitulo.setBorder(BorderFactory.createEmptyBorder(50, 0, 20, 0));
         add(lblTitulo, BorderLayout.NORTH);
 
         // Jpanel con grid para el form

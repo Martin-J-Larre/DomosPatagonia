@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 /**
@@ -28,10 +25,10 @@ public class EmpleadoController {
     public void agregarEmpleadoAdmin(String apellido, String nombre, int dni, int edad, String genero,
                                  String telefono, String email, String area, String turno,
                                  int id_usuario_administrador, String credenciales, String idiomas,
-                                 String titulo, int domo_asignado) {
+                                 String titulo, int domo_asignado, int huespedAsignado) {
     try {
         EmpleadoModel.crearEmpleadoAdmin(apellido, nombre, dni, edad, genero, telefono, email,
-                area, turno, id_usuario_administrador, credenciales, idiomas, titulo, domo_asignado);
+                area, turno, id_usuario_administrador, credenciales, idiomas, titulo, domo_asignado, huespedAsignado);
     } catch (Exception e) {
         e.printStackTrace();
     }

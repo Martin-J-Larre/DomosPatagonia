@@ -19,10 +19,10 @@ public class DomoModel {
     
     public void crearCheckin(String nombre, String apellido, String dni, String genero,
                                String direccion, String provincia, String pais,
-                               boolean checkInStatus, boolean checkOutStatus, double deposito) {
+                               boolean checkInStatus, boolean checkOutStatus, int deposito, int domoAsignado, int GuiaAsignado) {
 
-        String sql = "INSERT INTO huesped (nombre, apellido, dni, genero, direccion, provincia, pais, checkin_status, checkout_status, deposito) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO huesped (nombre, apellido, dni, genero, direccion, provincia, pais, checkin_status, checkout_status, deposito, id_domo, id_guia_turismo) "
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         
         try (Connection conn = conexion.conectar();
@@ -37,7 +37,9 @@ public class DomoModel {
             ps.setString(7, pais);
             ps.setBoolean(8, checkInStatus);
             ps.setBoolean(9, checkOutStatus);
-            ps.setDouble(10, deposito);
+            ps.setInt(10, deposito);
+            ps.setInt(11, domoAsignado);
+            ps.setInt(12, domoAsignado);
 
             ps.executeUpdate();
 

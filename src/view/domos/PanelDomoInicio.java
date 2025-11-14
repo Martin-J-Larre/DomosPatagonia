@@ -14,7 +14,7 @@ public class PanelDomoInicio extends JPanel {
         // Imagen background
         JLabel background = new JLabel();
         background.setLayout(new BorderLayout());
-        background.setIcon(new ImageIcon("img/interior-test-1.png")); 
+        background.setIcon(new ImageIcon("src/img/interior-test-1.png")); 
 
         // Panel central solo para título y botón enviar (En algun Z + para que salga arriba de la foto)
         JPanel centerPanel = new JPanel();

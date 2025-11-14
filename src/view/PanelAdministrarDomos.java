@@ -1,4 +1,5 @@
 package view;
+import controller.PanelBuscarDomoController;
 import view.domos.*;
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +17,10 @@ public class PanelAdministrarDomos extends JPanel {
         PanelDomoInicio panelInicio = new PanelDomoInicio(clPanel, panelDerecho);
         PanelCrearDomo panelCrearDomo = new PanelCrearDomo(clPanel, panelDerecho);
         PanelCheckin panelCheckin = new PanelCheckin(clPanel, panelDerecho);
-        PanelBuscarDomo d2 = new PanelBuscarDomo(clPanel, panelDerecho);
-        PanelListarDomos d3 = new PanelListarDomos(clPanel, panelDerecho);
+        PanelBuscarDomo panelBuscar = new PanelBuscarDomo(clPanel, panelDerecho);
+        new PanelBuscarDomoController(panelBuscar);
+        
+       
         PanelListarHuespedes d4 = new PanelListarHuespedes(clPanel, panelDerecho);
         PanelCheckout d5 = new PanelCheckout(clPanel, panelDerecho);
         PanelListarEmpleados d6 = new PanelListarEmpleados(clPanel, panelDerecho);
@@ -30,8 +33,8 @@ public class PanelAdministrarDomos extends JPanel {
         panelDerecho.add(panelInicio, "inicio");
         panelDerecho.add(panelCrearDomo, "crearDomo");
         panelDerecho.add(panelCheckin, "Checkin");
-        panelDerecho.add(d2, "panel2");
-        panelDerecho.add(d3, "panel3");
+        panelDerecho.add(panelBuscar, "panel2");
+       
         panelDerecho.add(d4, "panel4");
         panelDerecho.add(d5, "panel5");
         panelDerecho.add(d6, "panel6");

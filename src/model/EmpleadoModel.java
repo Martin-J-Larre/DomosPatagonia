@@ -83,6 +83,7 @@ public class EmpleadoModel {
             ps2.setString(3, temporada);
             ps2.setString(4, camioneta);
             ps2.setInt(5, domo_asignado);
+            
             ps2.executeUpdate();
 
             conn.commit();
@@ -93,9 +94,9 @@ public class EmpleadoModel {
     public static void crearEmpleadoAdmin(String apellido, String nombre, int dni, int edad, String genero,
                                         String telefono, String email, String area, String turno,
                                         int id_usuario_administrador, String credencial, String idiomas,
-                                        String titulo, int domo_asignado) throws SQLException {
+                                        String titulo, int domo_asignado, int id_huesped) throws SQLException {
         String queryEmpleado = "INSERT INTO empleado (apellido, nombre, dni, edad, genero, telefono, email, area, turno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String queryAdmin = "INSERT INTO usuario_administrador (id_usuario_administrador, credencial, idiomas, titulo, domo_asignado) VALUES (?, ?, ?, ?, ?)";
+        String queryAdmin = "INSERT INTO usuario_administrador (id_usuario_administrador, credencial, idiomas, titulo, domo_asignado, id_huesped) VALUES (?, ?, ?, ?, ?, ?)";
         
         Conexion conexion = new Conexion();
         try (Connection conn = conexion.conectar();
@@ -122,6 +123,7 @@ public class EmpleadoModel {
             ps2.setString(3, idiomas);
             ps2.setString(4, titulo);
             ps2.setInt(5, domo_asignado);
+            ps2.setInt(6, id_huesped);
             ps2.executeUpdate();
 
             conn.commit();

@@ -6,7 +6,7 @@ import controller.DomoController;
 
 public class PanelCheckin extends JPanel {
 
-    private JTextField nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField;
+    private JTextField nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField, guiaAsignadoTxtFiel;
     private JRadioButton masculinoRadioBtn, femeninoRadioBtn;
     private JCheckBox checkInStatus, checkOutStatus;
     private JButton btnVolver, btnEnviar;
@@ -18,7 +18,7 @@ public class PanelCheckin extends JPanel {
         // Título
         JLabel lblTitulo = new JLabel("Formulario de Check-In", SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
-        lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
         add(lblTitulo, BorderLayout.NORTH);
 
         // Panel principal
@@ -37,10 +37,12 @@ public class PanelCheckin extends JPanel {
         provinciaTextField = new JTextField(20);
         paisTextField = new JTextField(20);
         depositoTextField = new JTextField(20);
+        domoAsignadoTxtField = new JTextField(20);
+        guiaAsignadoTxtFiel = new JTextField(20);
 
         // Array para llenar las filas con los TextFiels y Lbls
-        String[] Lbls = {"Nombre:", "Apellido:", "DNI:", "Dirección:", "Provincia:", "País:", "Depósito:"};
-        JTextField[] TextFiels = {nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField};
+        String[] Lbls = {"Nombre", "Apellido", "DNI", "Dirección", "Provincia", "País", "Depósito", "Domo Asignado", "Guía Asignado"};
+        JTextField[] TextFiels = {nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField, guiaAsignadoTxtFiel};
 
         // Agregar TextFiels a las  con un loop
         int fila = 0;
@@ -119,9 +121,11 @@ public class PanelCheckin extends JPanel {
                 boolean checkIn = checkInStatus.isSelected();
                 boolean checkOut = checkOutStatus.isSelected();
                 int deposito = Integer.parseInt(depositoTextField.getText());
+                int domoAsignado = Integer.parseInt(domoAsignadoTxtField.getText());
+                int guiaAsignado = Integer.parseInt(guiaAsignadoTxtFiel.getText());
 
                 DomoController domoController = new DomoController();
-                domoController.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais, checkIn, checkOut, deposito);
+                domoController.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais, checkIn, checkOut, deposito, domoAsignado, guiaAsignado);
 
                 JOptionPane.showMessageDialog(this, "Check-In guardado correctamente.");
                 resetearCampos();
@@ -148,5 +152,7 @@ public class PanelCheckin extends JPanel {
         femeninoRadioBtn.setSelected(false);
         checkInStatus.setSelected(false);
         checkOutStatus.setSelected(false);
+        domoAsignadoTxtField.setText("");
+        guiaAsignadoTxtFiel.setText("");
     }
 }
