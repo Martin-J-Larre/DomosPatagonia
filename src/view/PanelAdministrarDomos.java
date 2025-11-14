@@ -1,5 +1,6 @@
 package view;
 import controller.PanelBuscarDomoController;
+import controller.PanelListarHuespedesController;
 import view.domos.*;
 import javax.swing.*;
 import java.awt.*;
@@ -18,30 +19,30 @@ public class PanelAdministrarDomos extends JPanel {
         PanelCrearDomo panelCrearDomo = new PanelCrearDomo(clPanel, panelDerecho);
         PanelCheckin panelCheckin = new PanelCheckin(clPanel, panelDerecho);
         PanelBuscarDomo panelBuscar = new PanelBuscarDomo(clPanel, panelDerecho);
-        new PanelBuscarDomoController(panelBuscar);
-        
+        PanelListarHuespedes paneListarHuespedes = new PanelListarHuespedes(clPanel, panelDerecho);
        
-        PanelListarHuespedes d4 = new PanelListarHuespedes(clPanel, panelDerecho);
+        
         PanelCheckout d5 = new PanelCheckout(clPanel, panelDerecho);
         PanelListarEmpleados d6 = new PanelListarEmpleados(clPanel, panelDerecho);
-        PanelListarEmpleadosPorArea d7 = new PanelListarEmpleadosPorArea(clPanel, panelDerecho);
+        
         PanelListarEmpleadosAdmin d8 = new PanelListarEmpleadosAdmin(clPanel, panelDerecho);
         PanelBuscarGuiaTurismo d9 = new PanelBuscarGuiaTurismo(clPanel, panelDerecho);
-        PanelActualizarLimpiezaDomo d10 = new PanelActualizarLimpiezaDomo(clPanel, panelDerecho);
+        
+        // Instancias para cargar la data del los controllers
+        new PanelBuscarDomoController(panelBuscar);
+        new PanelListarHuespedesController(paneListarHuespedes);
 
         // Añadir al  CardLayout
         panelDerecho.add(panelInicio, "inicio");
         panelDerecho.add(panelCrearDomo, "crearDomo");
         panelDerecho.add(panelCheckin, "Checkin");
         panelDerecho.add(panelBuscar, "panel2");
-       
-        panelDerecho.add(d4, "panel4");
+        panelDerecho.add(paneListarHuespedes, "panel4");
+        
         panelDerecho.add(d5, "panel5");
         panelDerecho.add(d6, "panel6");
-        panelDerecho.add(d7, "panel7");
         panelDerecho.add(d8, "panel8");
         panelDerecho.add(d9, "panel9");
-        panelDerecho.add(d10, "panel10");
 
         // Menú Izq
         JPanel menuIzquierdo = new JPanel(new BorderLayout());
