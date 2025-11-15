@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 import java.sql.Connection;
@@ -50,21 +47,19 @@ public class DomoModel {
     }
     
     // add tipo_de_cama
-    public void crearDomo(int domo_id, String disponibilidad, String limpieza, String tipo_de_cama, int precio,
-                          String amenities, String servicios, int empleadoLimpiezaAsignado) {
-        String sql = "INSERT INTO domo (id_domo, disponibilidad, limpieza_status, tipo_de_cama, precio, amenities, servicios, id_empleado_limpieza) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public void crearDomo(String disponibilidad, String limpieza, String tipo_de_cama, int precio,
+                          String amenities, String servicios) {
+        String sql = "INSERT INTO domo (disponibilidad, limpieza_status, precio, tipo_de_cama, amenities, servicios) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexion.conectar();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, domo_id);
-            ps.setString(2, disponibilidad);
-            ps.setString(3, limpieza);
-            ps.setString(4, tipo_de_cama);
-            ps.setInt(5, precio);
-            ps.setString(6, amenities);
-            ps.setString(7, servicios);
-            ps.setInt(8, empleadoLimpiezaAsignado);
+            ps.setString(1, disponibilidad);
+            ps.setString(2, limpieza);
+            ps.setInt(3, precio);
+            ps.setString(4, tipo_de_cama);      
+            ps.setString(5, amenities);
+            ps.setString(6, servicios);
             ps.executeUpdate();
 
         } catch (SQLException e) {

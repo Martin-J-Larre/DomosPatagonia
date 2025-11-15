@@ -23,9 +23,9 @@ public class DomoController {
     
     
     
-    public void crearDomo(int id_domo, String disponibilidad, String limpieza, String tipoDeCama, int precio,
-                          String amenities, String servicios, int empleadoLimpAsignado) {
-        model.crearDomo(id_domo, disponibilidad, limpieza, tipoDeCama, precio, amenities, servicios, empleadoLimpAsignado);
+    public void crearDomo(String disponibilidad, String limpieza, String tipoDeCama, int precio,
+                          String amenities, String servicios) {
+        model.crearDomo( disponibilidad, limpieza, tipoDeCama, precio, amenities, servicios);
     }
     
    

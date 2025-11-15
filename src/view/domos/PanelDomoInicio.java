@@ -24,16 +24,16 @@ public class PanelDomoInicio extends JPanel {
 
         // Titulo
         JLabel lblTitulo = new JLabel("Administrar Domos", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 32));
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         // Btn
         crearDomoBtn = new JButton("Crear Domo");
-        crearDomoBtn.setFont(new Font("Arial", Font.BOLD, 16));
+        crearDomoBtn.setFont(new Font("Arial", Font.PLAIN, 16));
         crearDomoBtn.setFocusPainted(false);
         crearDomoBtn.setBackground(new Color(52, 152, 219));
-        crearDomoBtn.setForeground(Color.WHITE);
+        crearDomoBtn.setForeground(Color.BLACK);
         crearDomoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         crearDomoBtn.setMaximumSize(new Dimension(200, 40));
         
