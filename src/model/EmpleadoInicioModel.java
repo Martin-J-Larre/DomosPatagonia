@@ -4,11 +4,11 @@ package model;
 import java.sql.*;
 
 public class EmpleadoInicioModel {
-    private String apellido, nombre, genero, telefono, email, area, turno;
+    private String apellido, nombre, genero, telefono, email, area_trabajo, turno;
     private int edad, dni;
     
     
-    public EmpleadoInicioModel(String apellido, String nombre, int dni, int edad, String genero, String telefono, String email, String area, String turno) {
+    public EmpleadoInicioModel(String apellido, String nombre, int dni, int edad, String genero, String telefono, String email, String area_trabajo, String turno) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
@@ -16,13 +16,13 @@ public class EmpleadoInicioModel {
         this.genero = genero;
         this.telefono = telefono;
         this.email = email;
-        this.area = area;
+        this.area_trabajo = area_trabajo;
         this.turno = turno;
     }
     
     public int createEmpleado() {
         Conexion conexion = new Conexion();
-        String query = "INSERT INTO empleado (apellido, nombre, dni, edad, genero, telefono, email, area, turno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO empleado (apellido, nombre, dni, edad, genero, telefono, email, area_trabajo, turno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexion.conectar();
              PreparedStatement ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -34,7 +34,7 @@ public class EmpleadoInicioModel {
             ps.setString(5, genero);
             ps.setString(6, telefono);
             ps.setString(7, email);
-            ps.setString(8, area);
+            ps.setString(8, area_trabajo);
             ps.setString(9, turno);
 
             ps.executeUpdate();

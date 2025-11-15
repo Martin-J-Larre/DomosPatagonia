@@ -6,7 +6,7 @@ import controller.EmpleadoController;
 
 public class PanelEmpleadoAdmin extends JPanel {
 
-    private JTextField adminNumTextField, credencialTextField, idiomasTextField, tituloTextField, domoAsignadoTextField, huespedAsignado;
+    private JTextField credencialTextField, idiomasTextField, tituloTextField, domoAsignadoTextField;
     private JButton enviarBtn, volverBtn;
   
 
@@ -29,29 +29,24 @@ public class PanelEmpleadoAdmin extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Crear TextFiels 
-        adminNumTextField = new JTextField(20);
         credencialTextField = new JTextField(20);
         idiomasTextField = new JTextField(20);
         tituloTextField = new JTextField(20);
         domoAsignadoTextField = new JTextField(20);
-        huespedAsignado = new JTextField(20);
+     
 
         String[] lbls = {
-            "Num Empleado Admin",
             "Credenciales",
             "Idiomas",
             "Título",
             "Domo Asignado",
-            "Huésped Asignado"
         };
 
         JTextField[] Textfiels = {
-            adminNumTextField,
             credencialTextField,
             idiomasTextField,
             tituloTextField,
             domoAsignadoTextField,
-            huespedAsignado
         };
 
         for (int i = 0; i < lbls.length; i++) {
@@ -76,7 +71,7 @@ public class PanelEmpleadoAdmin extends JPanel {
         // Escucha el evento en el botón "Enviar" captura los campos y usa el controllador para guardar los datos en Tabla empleado y empleado admin
         enviarBtn.addActionListener(e -> {
             try {
-                // Datos generales del PanelEmpleadoInicio
+                // Datos generales del Panel Empleado
                 String apellido = PanelEmpleadoInicio.apellidoTextField.getText();
                 String nombre = PanelEmpleadoInicio.nombreTextField.getText();
                 int dni = Integer.parseInt(PanelEmpleadoInicio.dniTextField.getText());
@@ -88,17 +83,15 @@ public class PanelEmpleadoAdmin extends JPanel {
                 String turno = PanelEmpleadoInicio.turnoTextField.getText();
 
                 // Datos  del administrador
-                int idUsuarioAdmin = Integer.parseInt(adminNumTextField.getText());
                 String credenciales = credencialTextField.getText();
                 String idiomas = idiomasTextField.getText();
                 String titulo = tituloTextField.getText();
-                int domoAsignado = Integer.parseInt(domoAsignadoTextField.getText());
-                int huespedAsignado = Integer.parseInt(this.huespedAsignado.getText());
+                String domoAsignado = domoAsignadoTextField.getText();
 
                 // Guardar en BD mediante el controlador
                 EmpleadoController controller = new EmpleadoController();
                 controller.agregarEmpleadoAdmin(apellido, nombre, dni, edad, genero, telefono, email, area, turno,
-                        idUsuarioAdmin, credenciales, idiomas, titulo, domoAsignado, huespedAsignado);
+                        credenciales, idiomas, titulo, domoAsignado);
 
                 JOptionPane.showMessageDialog(this, "Empleado Administrador agregado correctamente.");
                 limpiarCampos();
@@ -115,12 +108,10 @@ public class PanelEmpleadoAdmin extends JPanel {
     }
 
     private void limpiarCampos() {
-        adminNumTextField.setText("");
         credencialTextField.setText("");
         idiomasTextField.setText("");
         tituloTextField.setText("");
         domoAsignadoTextField.setText("");
-        huespedAsignado.setText("");
     }
 }
 

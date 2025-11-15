@@ -14,16 +14,16 @@ public class HuespedDAO {
         
         List<HuespedModel> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM huesped WHERE 1=1";
+        String query = "SELECT * FROM huesped WHERE 1=1";
         if (filtroNombre != null && !filtroNombre.isEmpty()) {
-            sql += " AND nombre LIKE ?";
+            query += " AND nombre LIKE ?";
         }
         if (filtroApellido != null && !filtroApellido.isEmpty()) {
-            sql += " AND apellido LIKE ?";
+            query += " AND apellido LIKE ?";
         }
 
         try (Connection conn = conexion.conectar();
-             PreparedStatement pst = conn.prepareStatement(sql)) {
+             PreparedStatement pst = conn.prepareStatement(query)) {
 
             int index = 1;
             if (filtroNombre != null && !filtroNombre.isEmpty()) {

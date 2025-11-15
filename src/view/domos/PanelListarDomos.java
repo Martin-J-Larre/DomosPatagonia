@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class PanelBuscarDomo extends JPanel {
+public class PanelListarDomos extends JPanel {
 
     private JTable tablaDomos;
     private DefaultTableModel modeloTabla;
@@ -18,7 +18,7 @@ public class PanelBuscarDomo extends JPanel {
         "tipo de cama", "amenities", "servicios", "Empleadolimpieza"
     };
 
-    public PanelBuscarDomo(CardLayout cl, JPanel parent) {
+    public PanelListarDomos(CardLayout cl, JPanel parent) {
         setLayout(new BorderLayout());
 
         // Tabla

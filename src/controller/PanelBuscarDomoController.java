@@ -2,7 +2,7 @@ package controller;
 
 import model.DomoDAO;
 import model.BuscarDomosModel;
-import view.domos.PanelBuscarDomo;
+import view.domos.PanelListarDomos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +10,10 @@ import java.util.List;
 
 public class PanelBuscarDomoController {
 
-    private PanelBuscarDomo view;
+    private PanelListarDomos view;
     private DomoDAO dao;
 
-    public PanelBuscarDomoController(PanelBuscarDomo view) {
+    public PanelBuscarDomoController(PanelListarDomos view) {
         this.view = view;
         this.dao = new DomoDAO();
 

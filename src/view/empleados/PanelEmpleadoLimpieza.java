@@ -5,13 +5,12 @@ import java.awt.*;
 import controller.EmpleadoLimpiezaController;
 
 public class PanelEmpleadoLimpieza extends JPanel {
-    private JTextField idEmpLimpTextField, horDeJornadaTextField, horDeEntradaTextField;
+    private JTextField horDeJornadaTextField, horDeEntradaTextField;
     private JTextField horDeSalidaTextField, diasJornadaTextField, salarioTextField;
     private JButton enviarBtn, volverBtn;
  
 
     public PanelEmpleadoLimpieza(CardLayout cl, JPanel parent) {
-        // https://docs.oracle.com/javase/7/docs/api/java/awt/BorderLayout.html
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
@@ -20,13 +19,10 @@ public class PanelEmpleadoLimpieza extends JPanel {
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
         
         // Creamos un borde
-        // https://docs.oracle.com/javase/8/docs/api/javax/swing/BorderFactory.html
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
         add(lblTitulo, BorderLayout.NORTH);
 
         // Panel con Formulario usando GridBagLayout
-        // https://www.geeksforgeeks.org/java/java-awt-gridbaglayout-class/
-        // https://docs.oracle.com/javase/8/docs/api/java/awt/GridBagConstraints.html
         JPanel panelForm = new JPanel(new GridBagLayout());
         panelForm.setBackground(Color.WHITE);
         
@@ -38,22 +34,17 @@ public class PanelEmpleadoLimpieza extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Inicializar campos
-        idEmpLimpTextField = new JTextField(20);
         horDeJornadaTextField = new JTextField(20);
         horDeEntradaTextField = new JTextField(20);
         horDeSalidaTextField = new JTextField(20);
         diasJornadaTextField = new JTextField(20);
         salarioTextField = new JTextField(20);
 
-        // Agregamos labels y textFiel a las filas dinamicamente iterando dos arrays en un loop
-        // Para reemplazar todo el codigo anterior y hacerlo más limpio
+
         
-        String[] lblsTexts = {"Empleado Limpieza Nro", "Horario de Jornada", "Hora de entrada", "Hora de salida", "Días de Jornada", "Salario"};
-        JTextField[] textFiels = {idEmpLimpTextField, horDeJornadaTextField, horDeEntradaTextField, horDeSalidaTextField, diasJornadaTextField, salarioTextField};
-        
-        // SELECT * FROM domos_patagonia.empleado;
-        // SELECT * FROM domos_patagonia.empleado_limpieza;
-        // Checkear si empleado limpieza tiene autoincrement id ????
+        String[] lblsTexts = { "Horas de Jornada", "Hora de entrada", "Hora de salida", "Días de Jornada", "Salario"};
+        JTextField[] textFiels = {horDeJornadaTextField, horDeEntradaTextField, horDeSalidaTextField, diasJornadaTextField, salarioTextField};
+         
         
         for (int i = 0; i < lblsTexts.length; i++) {
             gbc.gridx = 0; gbc.gridy = i;
@@ -93,7 +84,6 @@ public class PanelEmpleadoLimpieza extends JPanel {
                 String turno = PanelEmpleadoInicio.turnoTextField.getText();
                 
                 // Estos datos los agregamos desde el formulario agregar Empleado de limpieza de este panel
-                int nro = Integer.parseInt(idEmpLimpTextField.getText());
                 String horario = horDeJornadaTextField.getText();
                 int entrada = Integer.parseInt(horDeEntradaTextField.getText());
                 int salida = Integer.parseInt(horDeSalidaTextField.getText());
@@ -101,8 +91,7 @@ public class PanelEmpleadoLimpieza extends JPanel {
                 int salario = Integer.parseInt(salarioTextField.getText());
                 
                 boolean exito = controller.guardarEmpleadoCompleto(
-                    apellido, nombre, dni, edad, genero, telefono, email, area, turno,
-                    nro, horario, entrada, salida, dias, salario
+                    apellido, nombre, dni, edad, genero, telefono, email, area, turno, horario, entrada, salida, dias, salario
                 );
                 
                  if (exito) {
@@ -122,10 +111,7 @@ public class PanelEmpleadoLimpieza extends JPanel {
         volverBtn.addActionListener(e -> cl.show(parent, "inicio"));
     }
     
-    // TODO: sacarlo del constructor
-    
         private void resetFormEmpleadoLimpieza() {
-        idEmpLimpTextField.setText("");
         horDeJornadaTextField.setText("");
         horDeEntradaTextField.setText("");
         horDeSalidaTextField.setText("");
