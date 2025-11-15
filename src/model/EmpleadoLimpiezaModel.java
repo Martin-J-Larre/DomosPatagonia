@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class EmpleadoModel {
+public class EmpleadoLimpiezaModel {
     private String horas_de_jornada_semana;
     private int horario_entrada;
     private int horario_salida;
@@ -13,7 +13,7 @@ public class EmpleadoModel {
     private int IDempleado;
 
     // Constructor
-    public EmpleadoModel(String horas_de_jornada_semana, int horario_entrada, int horario_salida, String dias_de_jornada, int salario, int IDempleado) {
+    public EmpleadoLimpiezaModel(String horas_de_jornada_semana, int horario_entrada, int horario_salida, String dias_de_jornada, int salario, int IDempleado) {
         this.horas_de_jornada_semana = horas_de_jornada_semana;
         this.horario_entrada = horario_entrada;
         this.horario_salida = horario_salida;

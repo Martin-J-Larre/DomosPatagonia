@@ -42,7 +42,7 @@ public class PanelEmpleadoLimpieza extends JPanel {
 
 
         
-        String[] lblsTexts = { "Horas de Jornada", "Hora de entrada", "Hora de salida", "Días de Jornada", "Salario"};
+        String[] lblsTexts = { "Horas de Jornada Semanal", "Hora de entrada", "Hora de salida", "Días de Jornada", "Salario"};
         JTextField[] textFiels = {horDeJornadaTextField, horDeEntradaTextField, horDeSalidaTextField, diasJornadaTextField, salarioTextField};
          
         

@@ -2,11 +2,11 @@ package view.empleados;
 
 import javax.swing.*;
 import java.awt.*;
-import controller.EmpleadoController;
+import controller.EmpleadoGuiaTurimosController;
 
 public class PanelEmpleadoGuiaTurismo extends JPanel {
 
-    private JTextField numGuiaTextField, especialidadTextField, camionetaTextField, domoAsignadoTextField;
+    private JTextField especialidadTextField, camionetaTextField, domoAsignadoTextField;
     private JComboBox<String> temporadaComboBox;
     private JButton enviarBtn, volverBtn;
     
@@ -30,7 +30,6 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // TextFiels
-        numGuiaTextField = new JTextField(20);
         especialidadTextField = new JTextField(20);
 
         // JComboBox parav temporada
@@ -43,7 +42,6 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
 
         // Text JLbs
         String[] jlbs = {
-            "ID Guía Turismo",
             "Especialidad",
             "Temporada",
             "Camioneta",
@@ -52,7 +50,6 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
 
         // TextFileds
         Component[] TextFileds = {
-            numGuiaTextField,
             especialidadTextField,
             temporadaComboBox,
             camionetaTextField,
@@ -69,16 +66,21 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
 
         add(formPanel, BorderLayout.CENTER);
 
+        
         // Panel inferior con botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         panelBotones.setBackground(Color.WHITE);
-
         enviarBtn = new JButton("Enviar");
         volverBtn = new JButton("Volver al formulario Empleado");
-
-        // Escucha el evento en el botón "Volver" y vuelve al form empleado principal
-        volverBtn.addActionListener(e -> cl.show(parent, "inicio"));
-
+        panelBotones.add(enviarBtn);
+        panelBotones.add(volverBtn);
+        add(panelBotones, BorderLayout.SOUTH);
+        
+        
+        
+        EmpleadoGuiaTurimosController controller = new EmpleadoGuiaTurimosController();
+        
+        
         // Escucha del botón "Enviar" → guarda datos en BBDD para Empleado
         enviarBtn.addActionListener(e -> {
             try {
@@ -90,41 +92,44 @@ public class PanelEmpleadoGuiaTurismo extends JPanel {
                 String genero = PanelEmpleadoInicio.getGeneroSeleccionado();
                 String telefono = PanelEmpleadoInicio.telefonoTextField.getText();
                 String email = PanelEmpleadoInicio.emailTextField.getText();
-                String area = PanelEmpleadoInicio.getAreaSeleccionada();
+                String area_trabajo = PanelEmpleadoInicio.getAreaSeleccionada();
                 String turno = PanelEmpleadoInicio.turnoTextField.getText();
 
                 // Estos datos los agregamos desde el formulario agregar Guía Turismo
-                int numGuia = Integer.parseInt(numGuiaTextField.getText());
                 String especialidad = especialidadTextField.getText();
                 String temporada = (String) temporadaComboBox.getSelectedItem();
                 String camioneta = camionetaTextField.getText();
-                int domoAsignado = Integer.parseInt(domoAsignadoTextField.getText());
+                String domoAsignado = domoAsignadoTextField.getText();
 
-                // LLamar al metodo en el controller para guardar en BBDD
-                EmpleadoController controller = new EmpleadoController();
-                controller.agregarEmpleadoGuia(apellido, nombre, dni, edad, genero, telefono, email, area, turno,
-                        numGuia, especialidad, temporada, camioneta, domoAsignado);
-
-                JOptionPane.showMessageDialog(this, "Empleado Guía Turismo agregado correctamente.");
-                limpiarCampos();
-                PanelEmpleadoInicio.resetCampos();
+                boolean exito = controller.guardarEmpleadoCompleto(
+                    apellido, nombre, dni, edad, genero, telefono, email, area_trabajo, turno, especialidad, temporada, camioneta, domoAsignado
+                );
+                
+                if (exito) {
+                    JOptionPane.showMessageDialog(this, "Empleado de Guía Turismo guardado correctamente.");
+                    resetFormGuia(); // limpia el form del  crear EmpleadoLimpieza en este panel
+                    resetFormEmpleado(); // limpia form crear/agregar empleado del PanelEmpleadoInicio
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al guardar el empleado Gía Turismo.");
+                }
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Error al guardar: " + ex.getMessage());
             }
         });
+        
+        // Escucha el evento en el botón "Volver" y vuelve al form empleado principal
+        volverBtn.addActionListener(e -> cl.show(parent, "inicio"));
 
-        panelBotones.add(enviarBtn);
-        panelBotones.add(volverBtn);
-
-        add(panelBotones, BorderLayout.SOUTH);
     }
 
-    private void limpiarCampos() {
-        numGuiaTextField.setText("");
+    private void resetFormGuia() {
         especialidadTextField.setText("");
         temporadaComboBox.setSelectedIndex(0);
         camionetaTextField.setText("");
         domoAsignadoTextField.setText("");
     }
+            private void resetFormEmpleado() {
+        PanelEmpleadoInicio.resetCampos();
+    } 
 }
