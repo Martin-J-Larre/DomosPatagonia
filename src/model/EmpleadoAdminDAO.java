@@ -1,45 +1,61 @@
 package model;
 
-import model.ListarEmpleadoAdminModel;
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoAdminDAO {
-    Conexion conexion = new Conexion();
 
-    public List<ListarEmpleadoAdminModel> listar(String filtroTitulo, String filtroIdioma) {
-
+    public List<ListarEmpleadoAdminModel> listarEmpleadoAdmin(String filtroNombre, String filtroApellido, String filtroIdiomas) {
+        Conexion conexion = new Conexion();
+        
         List<ListarEmpleadoAdminModel> lista = new ArrayList<>();
 
-        String sql =
+        String query =
                 "SELECT ua.id_usuario_administrador, ua.credencial, ua.idiomas, ua.titulo, " +
                 "       e.nombre, e.apellido " +
                 "FROM usuario_administrador ua " +
                 "JOIN empleado e ON ua.id_empleado = e.id_empleado " +
-                "WHERE ua.titulo LIKE ? AND ua.idiomas LIKE ?";
+                "WHERE 1=1";
+
+        // FILTROS
+        if (filtroNombre != null && !filtroNombre.isEmpty()) {
+            query += " AND e.nombre LIKE ?";
+        }
+        if (filtroApellido != null && !filtroApellido.isEmpty()) {
+            query += " AND e.apellido LIKE ?";
+        }
+        if (filtroIdiomas != null && !filtroIdiomas.isEmpty()) {
+            query += " AND ua.idiomas LIKE ?";
+        }
 
         try (Connection conn = conexion.conectar();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement pst = conn.prepareStatement(query)) {
 
-            ps.setString(1, "%" + filtroTitulo + "%");
-            ps.setString(2, "%" + filtroIdioma + "%");
+            int index = 1;
 
-            ResultSet rs = ps.executeQuery();
+            if (filtroNombre != null && !filtroNombre.isEmpty()) {
+                pst.setString(index++, "%" + filtroNombre + "%");
+            }
+            if (filtroApellido != null && !filtroApellido.isEmpty()) {
+                pst.setString(index++, "%" + filtroApellido + "%");
+            }
+            if (filtroIdiomas != null && !filtroIdiomas.isEmpty()) {
+                pst.setString(index++, "%" + filtroIdiomas + "%");
+            }
+
+            ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                ListarEmpleadoAdminModel lea = new ListarEmpleadoAdminModel();
-
-                lea.setIdUsuarioAdmin(rs.getInt("id_usuario_administrador"));
-                lea.setCredencial(rs.getString("credencial"));
-                lea.setIdiomas(rs.getString("idiomas"));
-                lea.setTitulo(rs.getString("titulo"));
-                lea.setNombreEmpleado(rs.getString("nombre"));
-                lea.setApellidoEmpleado(rs.getString("apellido"));
-
-                lista.add(lea);
+                ListarEmpleadoAdminModel leam = new ListarEmpleadoAdminModel(
+                    rs.getInt("id_usuario_administrador"),
+                    rs.getString("credencial"),
+                    rs.getString("idiomas"),
+                    rs.getString("titulo"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido")
+                );
+                lista.add(leam);
             }
 
         } catch (SQLException e) {

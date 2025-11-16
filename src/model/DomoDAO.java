@@ -42,8 +42,7 @@ public class DomoDAO {
                         rs.getDouble("precio"),
                         rs.getString("tipo_de_cama"),
                         rs.getString("amenities"),
-                        rs.getString("servicios"),
-                        rs.getInt("id_empleado_limpieza")
+                        rs.getString("servicios")
                 );
                 lista.add(d);
             }

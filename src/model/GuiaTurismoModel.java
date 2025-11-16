@@ -1,7 +1,6 @@
 package model;
 
 public class GuiaTurismoModel {
-
     private int idGuia;
     private String nombre;
     private String apellido;
@@ -9,11 +8,11 @@ public class GuiaTurismoModel {
     private String especialidad;
     private String temporada;
     private String camioneta;
-    private int domoAsignado;
+    private String domoAsignado;
 
     public GuiaTurismoModel() {}
 
-    public GuiaTurismoModel(int idGuia, String nombre, String apellido, int dni, String especialidad, String temporada, String camioneta, int domoAsignado) {
+    public GuiaTurismoModel(int idGuia, String nombre, String apellido, int dni, String especialidad, String temporada, String camioneta, String domoAsignado) {
         this.idGuia = idGuia;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -46,7 +45,7 @@ public class GuiaTurismoModel {
     public String getCamioneta() { return camioneta; }
     public void setCamioneta(String camioneta) { this.camioneta = camioneta; }
 
-    public int getDomoAsignado() { return domoAsignado; }
+    public String getDomoAsignado() { return domoAsignado; }
     
-    public void setDomoAsignado(int domoAsignado) { this.domoAsignado = domoAsignado; }
+    public void setDomoAsignado(String domoAsignado) { this.domoAsignado = domoAsignado; }
 }

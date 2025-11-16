@@ -6,12 +6,23 @@ public class ListarEmpleadoAdminModel {
     private String credencial;
     private String idiomas;
     private String titulo;
-
     private String nombreEmpleado;
     private String apellidoEmpleado;
+    
+    
+    // Constructores
+    public ListarEmpleadoAdminModel(){}
+    
+    public ListarEmpleadoAdminModel(int idUsuarioAdmin, String credencial, String idiomas, String titulo, String nombreEmpleado, String apellidoEmpleado){
+    this.idUsuarioAdmin =  idUsuarioAdmin;
+    this.credencial = credencial;
+    this.idiomas = idiomas;
+    this.titulo = titulo;
+    this.nombreEmpleado = nombreEmpleado;
+    this.apellidoEmpleado = apellidoEmpleado;
+    }
 
     // Getters y setters
-
     public int getIdUsuarioAdmin() { return idUsuarioAdmin; }
     public void setIdUsuarioAdmin(int idUsuarioAdmin) { this.idUsuarioAdmin = idUsuarioAdmin; }
 

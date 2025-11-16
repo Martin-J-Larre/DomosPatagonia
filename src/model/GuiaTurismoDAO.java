@@ -48,7 +48,7 @@ public class GuiaTurismoDAO {
                 g.setEspecialidad(rs.getString("especialidad"));
                 g.setTemporada(rs.getString("temporada"));
                 g.setCamioneta(rs.getString("camioneta"));
-                g.setDomoAsignado(rs.getInt("domo_asignado"));
+                g.setDomoAsignado(rs.getString("domo_asignado"));
                 
                 lista.add(g);
             }

@@ -1,7 +1,5 @@
 package model;
 
-import model.HuespedModel;
-
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,11 +43,10 @@ public class HuespedDAO {
                         rs.getString("direccion"),
                         rs.getString("provincia"),
                         rs.getString("pais"),
-                        rs.getBoolean("checkin_status"),
-                        rs.getBoolean("checkout_status"),
-                        rs.getDouble("deposito"),
-                        rs.getInt("id_domo"),
-                        rs.getInt("id_guia_turismo")
+                        rs.getString("checkin_status"),
+                        rs.getString("checkout_status"),
+                        rs.getInt("deposito"),
+                        rs.getInt("id_domo")
                 );
                 lista.add(h);
             }

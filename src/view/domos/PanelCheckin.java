@@ -6,9 +6,10 @@ import controller.DomoController;
 
 public class PanelCheckin extends JPanel {
 
-    private JTextField nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField, guiaAsignadoTxtFiel;
+    private JTextField nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField;
     private JRadioButton masculinoRadioBtn, femeninoRadioBtn;
-    private JCheckBox checkInStatus, checkOutStatus;
+    private JComboBox<String> checkInStatus, checkOutStatus;
+
     private JButton btnVolver, btnEnviar;
 
     public PanelCheckin(CardLayout cl, JPanel parent) {
@@ -38,11 +39,11 @@ public class PanelCheckin extends JPanel {
         paisTextField = new JTextField(20);
         depositoTextField = new JTextField(20);
         domoAsignadoTxtField = new JTextField(20);
-        guiaAsignadoTxtFiel = new JTextField(20);
+
 
         // Array para llenar las filas con los TextFiels y Lbls
-        String[] Lbls = {"Nombre", "Apellido", "DNI", "Dirección", "Provincia", "País", "Depósito", "Domo Asignado", "Guía Asignado"};
-        JTextField[] TextFiels = {nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField, guiaAsignadoTxtFiel};
+        String[] Lbls = {"Nombre", "Apellido", "DNI", "Dirección", "Provincia", "País", "Depósito", "Domo Asignado"};
+        JTextField[] TextFiels = {nombreTextField, apellidoTextFiel, dniTextField, direccionTextField, provinciaTextField, paisTextField, depositoTextField, domoAsignadoTxtField};
 
         // Agregar TextFiels a las  con un loop
         int fila = 0;
@@ -77,13 +78,16 @@ public class PanelCheckin extends JPanel {
         formPanel.add(generoPanel, gbc);
         fila++;
 
-        // Estados de check-in y check-out con checkBox
-        checkInStatus = new JCheckBox("Check-In Realizado");
-        checkOutStatus = new JCheckBox("Check-Out Realizado");
+        // Estados de check-in y check-out con Combobox
+        String[] opcionesEstadoCheckin = {"Pendiente", "Realizado"};
+        String[] opcionesEstadoCheckout = {"Pendiente"};
+        checkInStatus = new JComboBox<>(opcionesEstadoCheckin);
+        checkOutStatus = new JComboBox<>(opcionesEstadoCheckout);
         checkInStatus.setBackground(Color.WHITE);
         checkOutStatus.setBackground(Color.WHITE);
 
-        JCheckBox[] estados = {checkInStatus, checkOutStatus};
+
+        JComboBox[] estados = {checkInStatus, checkOutStatus};
         String[] lblsEstado = {"Estado Check-In:", "Estado Check-Out:"};
 
         for (int i = 0; i < estados.length; i++) {
@@ -118,14 +122,14 @@ public class PanelCheckin extends JPanel {
                 String direccion = direccionTextField.getText();
                 String provincia = provinciaTextField.getText();
                 String pais = paisTextField.getText();
-                boolean checkIn = checkInStatus.isSelected();
-                boolean checkOut = checkOutStatus.isSelected();
+                String checkIn = checkInStatus.getSelectedItem().toString();
+                String checkOut = checkOutStatus.getSelectedItem().toString();
                 int deposito = Integer.parseInt(depositoTextField.getText());
                 int domoAsignado = Integer.parseInt(domoAsignadoTxtField.getText());
-                int guiaAsignado = Integer.parseInt(guiaAsignadoTxtFiel.getText());
+
 
                 DomoController domoController = new DomoController();
-                domoController.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais, checkIn, checkOut, deposito, domoAsignado, guiaAsignado);
+                domoController.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais, checkIn, checkOut, deposito, domoAsignado);
 
                 JOptionPane.showMessageDialog(this, "Check-In guardado correctamente.");
                 resetearCampos();
@@ -150,9 +154,8 @@ public class PanelCheckin extends JPanel {
         depositoTextField.setText("");
         masculinoRadioBtn.setSelected(false);
         femeninoRadioBtn.setSelected(false);
-        checkInStatus.setSelected(false);
-        checkOutStatus.setSelected(false);
+        checkInStatus.setSelectedIndex(0);
+        checkOutStatus.setSelectedIndex(0);
         domoAsignadoTxtField.setText("");
-        guiaAsignadoTxtFiel.setText("");
     }
 }

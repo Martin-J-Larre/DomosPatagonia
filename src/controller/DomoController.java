@@ -1,7 +1,7 @@
 
 package controller;
 
-import java.util.List;
+
 import model.DomoModel;
 
 public class DomoController {
@@ -15,10 +15,10 @@ public class DomoController {
     
     public void crearCheckin(String nombre, String apellido, String dni, String genero,
                                String direccion, String provincia, String pais,
-                               boolean checkInStatus, boolean checkOutStatus, int deposito, int domoAsignado, int guiaAsignado) {
+                               String checkInStatus, String checkOutStatus, int deposito, int domoAsignado) {
 
         model.crearCheckin(nombre, apellido, dni, genero, direccion, provincia, pais,
-                checkInStatus, checkOutStatus, deposito, domoAsignado, guiaAsignado);
+                checkInStatus, checkOutStatus, deposito, domoAsignado);
     }
     
     

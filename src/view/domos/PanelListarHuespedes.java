@@ -8,14 +8,13 @@ public class PanelListarHuespedes extends JPanel {
 
     private JTable tablaHuespedes;
     private DefaultTableModel modeloTabla;
-
     private JTextField txtFiltroNombre;
     private JTextField txtFiltroApellido;
     private JButton btnBuscar;
 
     private String[] columnas = {
         "id_huesped", "nombre", "apellido", "dni", "genero", "direccion", "provincia", "pais",
-        "checkin_status", "checkout_status", "deposito", "id_domo", "id_guia_turismo"
+        "checkin_status", "checkout_status", "deposito", "id_domo"
     };
 
     public PanelListarHuespedes(CardLayout cl, JPanel parent) {
@@ -68,8 +67,7 @@ public class PanelListarHuespedes extends JPanel {
                 h.isCheckinStatus(),
                 h.isCheckoutStatus(),
                 h.getDeposito(),
-                h.getIdDomo(),
-                h.getIdGuiaTurismo()
+                h.getIdDomo()
             });
         }
     }

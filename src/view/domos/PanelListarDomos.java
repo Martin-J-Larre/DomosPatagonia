@@ -63,7 +63,6 @@ public class PanelListarDomos extends JPanel {
                 d.getTipoDeCama(),
                 d.getAmenities(),
                 d.getServicios(),
-                d.getIdEmpleadoLimpieza()
             });
         }
     }

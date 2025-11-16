@@ -6,46 +6,40 @@ import view.domos.PanelListarEmpleadosAdmin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PanelListarEmpleadosAdminController {
 
     private PanelListarEmpleadosAdmin vista;
-    private EmpleadoAdminDAO dao = new EmpleadoAdminDAO();
+    private EmpleadoAdminDAO dao;
 
+    // Constructor
     public PanelListarEmpleadosAdminController(PanelListarEmpleadosAdmin vista) {
         this.vista = vista;
-
-        cargarTabla("", "");
-
+        this.dao = new EmpleadoAdminDAO();
+        
+        initController();
+        cargarTabla(); 
+        
+    }
+        private void initController() {
         vista.getBtnFiltrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                String titulo = vista.getTxtTitulo().getText().trim();
-                String idioma = vista.getComboIdiomas().getSelectedItem().toString();
-
-                if (idioma.equals("Todos")) idioma = "";
-
-                cargarTabla(titulo, idioma);
+                cargarTabla();
             }
         });
     }
+        
+    private void cargarTabla() {
+        String nombre = vista.getFiltroNombre();
+        String apellido = vista.getFiltroApellido();
+        String idiomas = vista.getFiltroIdiomas();
 
-    private void cargarTabla(String titulo, String idioma) {
-
-        var modelo = vista.getModeloTabla();
-        modelo.setRowCount(0);
-
-        for (ListarEmpleadoAdminModel lea : dao.listar(titulo, idioma)) {
-
-            modelo.addRow(new Object[]{
-                    lea.getIdUsuarioAdmin(),
-                    lea.getCredencial(),
-                    lea.getIdiomas(),
-                    lea.getTitulo(),
-                    lea.getNombreEmpleado(),
-                    lea.getApellidoEmpleado()
-            });
-        }
+        List<ListarEmpleadoAdminModel> lista = dao.listarEmpleadoAdmin(nombre, apellido, idiomas);
+        vista.actualizarTabla(lista);
     }
+
+
+
 }

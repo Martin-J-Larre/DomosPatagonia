@@ -9,12 +9,11 @@ public class BuscarDomosModel{
     private String tipoDeCama;
     private String amenities;
     private String servicios;
-    private int idEmpleadoLimpieza;
 
     public BuscarDomosModel() {}
 
     public BuscarDomosModel(int idDomo, String disponibilidad, String limpiezaStatus, double precio,
-                String tipoDeCama, String amenities, String servicios, int idEmpleadoLimpieza) {
+                String tipoDeCama, String amenities, String servicios) {
         this.idDomo = idDomo;
         this.disponibilidad = disponibilidad;
         this.limpiezaStatus = limpiezaStatus;
@@ -22,7 +21,6 @@ public class BuscarDomosModel{
         this.tipoDeCama = tipoDeCama;
         this.amenities = amenities;
         this.servicios = servicios;
-        this.idEmpleadoLimpieza = idEmpleadoLimpieza;
     }
 
     // Getters y Setters con el autocompletado
@@ -47,6 +45,4 @@ public class BuscarDomosModel{
     public String getServicios() { return servicios; }
     public void setServicios(String servicios) { this.servicios = servicios; }
 
-    public int getIdEmpleadoLimpieza() { return idEmpleadoLimpieza; }
-    public void setIdEmpleadoLimpieza(int idEmpleadoLimpieza) { this.idEmpleadoLimpieza = idEmpleadoLimpieza; }
 }

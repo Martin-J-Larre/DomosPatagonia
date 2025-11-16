@@ -10,17 +10,17 @@ public class HuespedModel {
     private String direccion;
     private String provincia;
     private String pais;
-    private boolean checkinStatus;
-    private boolean checkoutStatus;
-    private double deposito;
+    private String checkinStatus;
+    private String checkoutStatus;
+    private int deposito;
     private int idDomo;
-    private int idGuiaTurismo;
+   
 
     public HuespedModel() {}
 
     public HuespedModel(int idHuesped, String nombre, String apellido, String dni, String genero,
-                    String direccion, String provincia, String pais, boolean checkinStatus,
-                    boolean checkoutStatus, double deposito, int idDomo, int idGuiaTurismo) {
+                    String direccion, String provincia, String pais, String checkinStatus,
+                    String checkoutStatus, int deposito, int idDomo) {
         this.idHuesped = idHuesped;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,7 +33,6 @@ public class HuespedModel {
         this.checkoutStatus = checkoutStatus;
         this.deposito = deposito;
         this.idDomo = idDomo;
-        this.idGuiaTurismo = idGuiaTurismo;
     }
 
     // Getters y Setters
@@ -61,18 +60,17 @@ public class HuespedModel {
     public String getPais() { return pais; }
     public void setPais(String pais) { this.pais = pais; }
 
-    public boolean isCheckinStatus() { return checkinStatus; }
-    public void setCheckinStatus(boolean checkinStatus) { this.checkinStatus = checkinStatus; }
+    public String isCheckinStatus() { return checkinStatus; }
+    public void setCheckinStatus(String checkinStatus) { this.checkinStatus = checkinStatus; }
 
-    public boolean isCheckoutStatus() { return checkoutStatus; }
-    public void setCheckoutStatus(boolean checkoutStatus) { this.checkoutStatus = checkoutStatus; }
+    public String isCheckoutStatus() { return checkoutStatus; }
+    public void setCheckoutStatus(String checkoutStatus) { this.checkoutStatus = checkoutStatus; }
 
-    public double getDeposito() { return deposito; }
-    public void setDeposito(double deposito) { this.deposito = deposito; }
+    public int getDeposito() { return deposito; }
+    public void setDeposito(int deposito) { this.deposito = deposito; }
 
     public int getIdDomo() { return idDomo; }
     public void setIdDomo(int idDomo) { this.idDomo = idDomo; }
 
-    public int getIdGuiaTurismo() { return idGuiaTurismo; }
-    public void setIdGuiaTurismo(int idGuiaTurismo) { this.idGuiaTurismo = idGuiaTurismo; }
+
 }
