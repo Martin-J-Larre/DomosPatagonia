@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class PanelBuscarDomoController {
+public class PanelListarDomoController {
 
     private PanelListarDomos view;
     private DomoDAO dao;
 
-    public PanelBuscarDomoController(PanelListarDomos view) {
+    public PanelListarDomoController(PanelListarDomos view) {
         this.view = view;
         this.dao = new DomoDAO();
 

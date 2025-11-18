@@ -1,6 +1,5 @@
-package model;
 
-import model.ListarEmpleadosModel;
+package model;
 
 import java.sql.*;
 import java.util.ArrayList;

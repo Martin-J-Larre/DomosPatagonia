@@ -1,11 +1,10 @@
 package controller;
 
-import java.awt.CardLayout;
 import model.ListarEmpleadosDAO;
 import model.ListarEmpleadosModel;
 import view.domos.PanelListarEmpleados;
 
-import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

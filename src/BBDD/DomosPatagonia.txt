@@ -1,0 +1,158 @@
+-- Crear BBDD
+CREATE DATABASE DomosPatagonia;
+
+-- Usar BBDD
+USE DomosPatagonia;
+
+-- Crear Tablas
+
+-- Tabla iniciar sesión --
+CREATE TABLE iniciar_sesion (
+    usuario VARCHAR(100) NOT NULL UNIQUE,
+    contrasenia VARCHAR(100) NOT NULL
+);
+
+-- Tabla Domo --
+CREATE TABLE domo (
+    id_domo INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    disponibilidad VARCHAR(100) NOT NULL,
+    limpieza_status VARCHAR(100) NOT NULL,
+    precio INT NOT NULL,
+    tipo_de_cama VARCHAR(150) NOT NULL,
+    amenities VARCHAR(250) NOT NULL,
+    servicios VARCHAR(250) NOT NULL
+);
+
+-- Tabla Empleado --
+CREATE TABLE empleado (
+    id_empleado INT AUTO_INCREMENT PRIMARY KEY NOT NULL UNIQUE,
+    apellido VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    dni INT NOT NULL,
+    edad INT NOT NULL,
+    genero VARCHAR(100) NOT NULL,
+    telefono VARCHAR(100) NOT NULL,
+    area_trabajo VARCHAR(50),
+    turno VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+-- Tabla Empleado Limpieza --
+CREATE TABLE empleado_limpieza (
+    id_empleado_limpieza INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    horas_de_jornada_semana VARCHAR(100) NOT NULL,
+    horario_entrada INT NOT NULL,
+    horario_salida INT NOT NULL,
+    dias_de_jornada VARCHAR(100) NOT NULL,
+    salario INT NOT NULL,
+    id_empleado INT NOT NULL, 
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+);
+
+-- Tabla Guía Turismo --
+CREATE TABLE guia_turismo (
+    id_guia_turismo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    especialidad VARCHAR(100) NOT NULL,
+    temporada VARCHAR(100) NOT NULL,
+    camioneta VARCHAR(100) NOT NULL, 
+    domo_asignado VARCHAR(100) NOT NULL,
+    id_empleado INT NOT NULL, 
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+);
+
+-- Tabla Huesped --
+CREATE TABLE huesped (
+    id_huesped INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    dni INT NOT NULL UNIQUE,
+    genero VARCHAR(100) NOT NULL,
+    direccion VARCHAR(250) NOT NULL,
+    provincia VARCHAR(250) NOT NULL,
+    pais VARCHAR(250) NOT NULL,
+    checkin_status VARCHAR(100) NOT NULL,
+    checkout_status VARCHAR(100) NOT NULL,
+    deposito INT NOT NULL,
+    id_domo INT NOT NULL,
+    FOREIGN KEY (id_domo) REFERENCES domo(id_domo)
+);
+
+-- Tabla Usuario Administrador
+CREATE TABLE usuario_administrador (
+    id_usuario_administrador INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    credencial VARCHAR(100) NOT NULL,
+    idiomas VARCHAR(355) NOT NULL, 
+    titulo VARCHAR(200) NOT NULL,
+    domo_asignado VARCHAR(200) NOT NULL,
+    id_empleado INT NOT NULL, 
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+);
+
+-- Unico Usuario (Pora este prototipado);
+INSERT INTO iniciar_sesion (usuario, contrasenia) VALUES
+('admin', '1234');
+
+-- Insertar Domos
+INSERT INTO domo (disponibilidad, limpieza_status, precio, tipo_de_cama, amenities, servicios) VALUES
+('Disponible', 'Ordenado', 45000, 'King', 'Jacuzzi, Frigobar', 'Desayuno incluido'),
+('Disponible', 'Ordenado', 42000, 'Queen', 'Deck privado, Calefacción', 'Room service'),
+('Disponible', 'Ordenado', 38000, 'Standar', 'Aire acondicionado', 'WiFi'),
+('Disponible', 'desordenado', 45000, 'Queen', 'TV, Aire Acondicionado', 'Majsajes'),
+('Disponible', 'desordenado', 46000, 'King', 'Jacuzzi', 'Desayuno y cena');
+
+-- Insertar empleados
+INSERT INTO empleado (apellido, nombre, dni, edad, genero, telefono, area_trabajo, turno, email) VALUES
+-- 5 ADMINISTRADORES
+('Gómez', 'Mariana', 30123456, 32, 'Femenino', '1152345678', 'Empleado Administrador', 'Mañana', 'mariana.gomez@domospatagonia.com'),
+('Pérez', 'Jorge', 28987654, 45, 'Masculino', '1145568899', 'Empleado Administrador', 'Tarde', 'jorge.perez@domospatagonia.com'),
+('Sánchez', 'Natalia', 31222333, 29, 'Femenino', '1167788990', 'Empleado Administrador', 'Mañana', 'natalia.sanchez@domospatagonia.com'),
+('Torres', 'Ricardo', 28777666, 41, 'Masculino', '1179901122', 'Empleado Administrador', 'Noche', 'ricardo.torres@domospatagonia.com'),
+('Martínez', 'Florencia', 33555111, 27, 'Femenino', '1144433322', 'Empleado Administrador', 'Tarde', 'flor.martinez@domospatagonia.com'),
+-- 5 DE LIMPIEZA
+('Rodríguez', 'Lucía', 33111222, 28, 'Femenino', '1166677788', 'Empleado Limpieza', 'Mañana', 'lucia.rod@domospatagonia.com'),
+('Fernández', 'Hernán', 27555444, 38, 'Masculino', '1177788899', 'Empleado Limpieza', 'Noche', 'hernan.fer@domospatagonia.com'),
+('Castro', 'Brenda', 32200999, 26, 'Femenino', '1166655544', 'Empleado Limpieza', 'Tarde', 'brenda.castro@domospatagonia.com'),
+('Aguirre', 'Matías', 29888877, 34, 'Masculino', '1155533311', 'Empleado Limpieza', 'Mañana', 'matias.aguirre@domospatagonia.com'),
+('Silva', 'Rocío', 34422000, 30, 'Femenino', '1144499988', 'Empleado Limpieza', 'Noche', 'rocio.silva@domospatagonia.com'),
+-- 5 DE TURISMO
+('López', 'Carolina', 32233444, 29, 'Femenino', '1158899900', 'Guía Turismo', 'Mañana', 'caro.lopez@domospatagonia.com'),
+('Molina', 'Diego', 29555123, 37, 'Masculino', '1182211099', 'Guía Turismo', 'Tarde', 'diego.molina@domospatagonia.com'),
+('Vega', 'Sofía', 33344555, 25, 'Femenino', '1167788223', 'Guía Turismo', 'Mañana', 'sofia.vega@domospatagonia.com'),
+('Ríos', 'Leonardo', 31000987, 42, 'Masculino', '1156677788', 'Guía Turismo', 'Noche', 'leo.rios@domospatagonia.com'),
+('Campos', 'Valeria', 32777001, 31, 'Femenino', '1145577788', 'Guía Turismo', 'Tarde', 'valeria.campos@domospatagonia.com');
+
+-- Insertar empleado administrador
+INSERT INTO usuario_administrador (credencial, idiomas, titulo, domo_asignado, id_empleado) VALUES
+('ADM001', 'Español', 'Administrador General', 'Domo 1', 1),
+('ADM002', 'Español, Inglés', 'Supervisor de Domos', 'Domo 2', 2),
+('ADM003', 'Español', 'Gerente Operativo', 'Domo 3', 3),
+('ADM004', 'Español', 'Control de Calidad', 'Domo 4', 4),
+('ADM005', 'Español, Portugués', 'Coordinador de Reservas', 'Domo 5', 5);
+
+-- Insertar empleados limpieza
+INSERT INTO empleado_limpieza (horas_de_jornada_semana, horario_entrada, horario_salida, dias_de_jornada, salario, id_empleado) VALUES
+('40', 8, 16, 'Lunes a Viernes', 250000, 6),
+('36', 9, 17, 'Martes a Sábado', 230000, 7),
+('42', 7, 15, 'Lunes a Viernes', 260000, 8),
+('30', 10, 16, 'Miércoles a Domingo', 200000, 9),
+('38', 8, 14, 'Lunes a Sábado', 240000, 10);
+
+-- Insertar Guía Turismo
+INSERT INTO guia_turismo (especialidad, temporada, camioneta, domo_asignado, id_empleado) VALUES
+('Senderismo', 'Verano', 'Toyota Hilux', 'Domo 1', 11),
+('Montaña', 'Invierno', 'Ford Ranger', 'Domo 3', 12),
+('Lagos', 'Primavera', 'Chevrolet S10', 'Domo 5', 13),
+('Patagonia Salvaje', 'Verano', 'Toyota SW4', 'Domo 2', 14),
+('Glaciares', 'Invierno', 'Ford F100', 'Domo 4', 15);
+
+
+
+
+-- Insertar Huéspedes
+INSERT INTO huesped (nombre, apellido, dni, genero, direccion, provincia, pais, checkin_status, checkout_status, deposito, id_domo) VALUES
+('Sofía', 'Alvarez', 40111222, 'Femenino', 'Av. Rivadavia 1234', 'Buenos Aires', 'Argentina', 'Realizado', 'Pendiente', 20000, 1),
+('Martín', 'Castro', 38999444, 'Masculino', 'Calle Mitre 450', 'Neuquén', 'Argentina', 'Pendiente', 'Pendiente', 15000, 2),
+('Laura', 'Benítez', 41222333, 'Femenino', 'Av. Libertador 780', 'Santa Cruz', 'Argentina', 'Realizado', 'Pendiente', 22000, 3),
+('Diego', 'Suárez', 37777444, 'Masculino', 'San Martín 1250', 'Tierra del Fuego', 'Argentina', 'Realizado', 'Realizado', 18000, 4),
+('Ana', 'Quiroga', 40555666, 'Femenino', 'Sarmiento 889', 'Chubut', 'Argentina', 'Pendiente', 'Pendiente', 15000, 5);
+

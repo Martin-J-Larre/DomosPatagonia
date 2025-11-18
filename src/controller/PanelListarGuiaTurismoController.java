@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class PanelBuscarGuiaTurismoController {
+public class PanelListarGuiaTurismoController {
 
     private PanelListarGuiasTurismo view;
     private GuiaTurismoDAO dao;
 
-    public PanelBuscarGuiaTurismoController(PanelListarGuiasTurismo view) {
+    public PanelListarGuiaTurismoController(PanelListarGuiasTurismo view) {
         this.view = view;
         this.dao = new GuiaTurismoDAO();
 

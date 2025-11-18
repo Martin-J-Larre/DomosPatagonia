@@ -11,7 +11,6 @@ public class DashboardView extends JFrame {
 
     public DashboardView() {
         setTitle("Dashboard");
-        // getContentPane().setBackground(Color.decode("#72b48c"));
         setSize(1020, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

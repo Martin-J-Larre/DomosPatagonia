@@ -84,18 +84,6 @@ public class InicioSesionView extends JFrame{
     }
     
     
-//    public JButton getInicioSesionBtn() {
-//        return inicioSesionBtn;
-//    }
-//
-//    public String getUsuario() {
-//        return usuarioTextField.getText();
-//    }
-//
-//    public String getContrasenia() {
-//        return contraseniaTextField.getText();
-//    }
-    
     public void addInicioSesionListener(ActionListener listener) {
         inicioSesionBtn.addActionListener(listener);
         cancelarBtn.addActionListener(listener);
