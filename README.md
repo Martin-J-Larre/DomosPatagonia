@@ -1,1 +1,1 @@
-# Este branch contiene la version fianl del proyecto Domos Patagonia.
+# Este branch contiene la version final del proyecto Domos Patagonia.
